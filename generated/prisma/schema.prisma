@@ -8,12 +8,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             Int      @id @default(autoincrement())
-  email          String   @unique
-  password       String
-  name           String
-  recoveryTokens String[]
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+model users {
+  id                 Int                     @id @default(autoincrement())
+  email              String                  @unique
+  password           String
+  name               String
+  recoveryTokens     String[]
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  PasswordResetToken password_reset_tokens[]
+}
+
+model password_reset_tokens {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      users    @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
 }

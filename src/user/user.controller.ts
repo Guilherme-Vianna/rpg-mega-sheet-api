@@ -7,6 +7,25 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
+  // TODO: Implementar o envio de e-mail para recuperação de senha
+  // @Post('request-password-reset')
+  // async requestPasswordReset(@Body('email') email: string) {
+  //   const token = await this.userService.generatePasswordResetToken(email);
+
+  //   await this.userService.sendResetEmail(email, token);
+
+  //   return { message: 'Se o e-mail existir, um link de redefinição foi enviado.' };
+  // }
+
+  @Post('reset-password')
+  async resetPassword(
+    @Body('token') token: string,
+    @Body('newPassword') newPassword: string,
+  ) {
+    await this.userService.resetPassword(token, newPassword);
+    return { message: 'Senha redefinida com sucesso.' };
+  }
+
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<any> {
     return this.userService.create(createUserDto);
@@ -34,4 +53,5 @@ export class UserController {
   async remove(@Param('id', ParseIntPipe) id: number) {
     return this.userService.remove(id);
   }
+
 }
