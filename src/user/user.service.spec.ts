@@ -19,11 +19,11 @@ describe('UserService Integration Tests', () => {
   });
 
   beforeEach(async () => {
-    await prisma.user.deleteMany();
+    await prisma.users.deleteMany();
   });
 
   afterAll(async () => {
-    await prisma.user.deleteMany();
+    await prisma.users.deleteMany();
     await prisma.$disconnect();
   });
 
@@ -41,7 +41,7 @@ describe('UserService Integration Tests', () => {
       expect(result.email).toBe(createUserDto.email);
       expect(result.name).toBe(createUserDto.name);
 
-      const userInDb = await prisma.user.findUnique({
+      const userInDb = await prisma.users.findUnique({
         where: { email: createUserDto.email },
       });
 
@@ -125,7 +125,7 @@ describe('UserService Integration Tests', () => {
       expect(result).toBeDefined();
       expect(result.name).toBe(updateUserDto.name);
 
-      const updatedUser = await prisma.user.findUnique({
+      const updatedUser = await prisma.users.findUnique({
         where: { id: createdUser.id },
       });
 
@@ -151,7 +151,7 @@ describe('UserService Integration Tests', () => {
 
       await service.remove(createdUser.id);
 
-      const deletedUser = await prisma.user.findUnique({
+      const deletedUser = await prisma.users.findUnique({
         where: { id: createdUser.id },
       });
 

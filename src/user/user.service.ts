@@ -9,6 +9,10 @@ import { randomBytes } from 'crypto';
 export class UserService {
   constructor(private prisma: PrismaService) { }
 
+  async findByEmail(email: string) {
+    return this.prisma.users.findUnique({ where: { email } });
+  }
+
   // TODO: Implementar o envio de e-mail para recuperação de senha
   // async sendResetEmail(email: string, token: string) {
   //   const transporter = nodemailer.createTransport({
