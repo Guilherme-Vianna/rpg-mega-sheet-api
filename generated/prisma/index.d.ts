@@ -23,6 +23,16 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>
  * 
  */
 export type password_reset_tokens = $Result.DefaultSelection<Prisma.$password_reset_tokensPayload>
+/**
+ * Model sheets
+ * 
+ */
+export type sheets = $Result.DefaultSelection<Prisma.$sheetsPayload>
+/**
+ * Model fields
+ * 
+ */
+export type fields = $Result.DefaultSelection<Prisma.$fieldsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -168,6 +178,26 @@ export class PrismaClient<
     * ```
     */
   get password_reset_tokens(): Prisma.password_reset_tokensDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sheets`: Exposes CRUD operations for the **sheets** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sheets
+    * const sheets = await prisma.sheets.findMany()
+    * ```
+    */
+  get sheets(): Prisma.sheetsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.fields`: Exposes CRUD operations for the **fields** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Fields
+    * const fields = await prisma.fields.findMany()
+    * ```
+    */
+  get fields(): Prisma.fieldsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -609,7 +639,9 @@ export namespace Prisma {
 
   export const ModelName: {
     users: 'users',
-    password_reset_tokens: 'password_reset_tokens'
+    password_reset_tokens: 'password_reset_tokens',
+    sheets: 'sheets',
+    fields: 'fields'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "password_reset_tokens"
+      modelProps: "users" | "password_reset_tokens" | "sheets" | "fields"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -780,6 +812,154 @@ export namespace Prisma {
           }
         }
       }
+      sheets: {
+        payload: Prisma.$sheetsPayload<ExtArgs>
+        fields: Prisma.sheetsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.sheetsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.sheetsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          findFirst: {
+            args: Prisma.sheetsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.sheetsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          findMany: {
+            args: Prisma.sheetsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>[]
+          }
+          create: {
+            args: Prisma.sheetsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          createMany: {
+            args: Prisma.sheetsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.sheetsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>[]
+          }
+          delete: {
+            args: Prisma.sheetsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          update: {
+            args: Prisma.sheetsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          deleteMany: {
+            args: Prisma.sheetsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.sheetsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.sheetsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>[]
+          }
+          upsert: {
+            args: Prisma.sheetsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sheetsPayload>
+          }
+          aggregate: {
+            args: Prisma.SheetsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSheets>
+          }
+          groupBy: {
+            args: Prisma.sheetsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SheetsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.sheetsCountArgs<ExtArgs>
+            result: $Utils.Optional<SheetsCountAggregateOutputType> | number
+          }
+        }
+      }
+      fields: {
+        payload: Prisma.$fieldsPayload<ExtArgs>
+        fields: Prisma.fieldsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.fieldsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.fieldsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          findFirst: {
+            args: Prisma.fieldsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.fieldsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          findMany: {
+            args: Prisma.fieldsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>[]
+          }
+          create: {
+            args: Prisma.fieldsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          createMany: {
+            args: Prisma.fieldsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.fieldsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>[]
+          }
+          delete: {
+            args: Prisma.fieldsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          update: {
+            args: Prisma.fieldsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          deleteMany: {
+            args: Prisma.fieldsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.fieldsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.fieldsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>[]
+          }
+          upsert: {
+            args: Prisma.fieldsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fieldsPayload>
+          }
+          aggregate: {
+            args: Prisma.FieldsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFields>
+          }
+          groupBy: {
+            args: Prisma.fieldsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FieldsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.fieldsCountArgs<ExtArgs>
+            result: $Utils.Optional<FieldsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -866,6 +1046,8 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     users?: usersOmit
     password_reset_tokens?: password_reset_tokensOmit
+    sheets?: sheetsOmit
+    fields?: fieldsOmit
   }
 
   /* Types for Logging */
@@ -961,10 +1143,12 @@ export namespace Prisma {
 
   export type UsersCountOutputType = {
     PasswordResetToken: number
+    sheets: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     PasswordResetToken?: boolean | UsersCountOutputTypeCountPasswordResetTokenArgs
+    sheets?: boolean | UsersCountOutputTypeCountSheetsArgs
   }
 
   // Custom InputTypes
@@ -983,6 +1167,44 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountPasswordResetTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: password_reset_tokensWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountSheetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sheetsWhereInput
+  }
+
+
+  /**
+   * Count Type SheetsCountOutputType
+   */
+
+  export type SheetsCountOutputType = {
+    Fields: number
+  }
+
+  export type SheetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Fields?: boolean | SheetsCountOutputTypeCountFieldsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SheetsCountOutputType without action
+   */
+  export type SheetsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SheetsCountOutputType
+     */
+    select?: SheetsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SheetsCountOutputType without action
+   */
+  export type SheetsCountOutputTypeCountFieldsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fieldsWhereInput
   }
 
 
@@ -1201,6 +1423,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     PasswordResetToken?: boolean | users$PasswordResetTokenArgs<ExtArgs>
+    sheets?: boolean | users$sheetsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -1237,6 +1460,7 @@ export namespace Prisma {
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "recoveryTokens" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     PasswordResetToken?: boolean | users$PasswordResetTokenArgs<ExtArgs>
+    sheets?: boolean | users$sheetsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1246,6 +1470,7 @@ export namespace Prisma {
     name: "users"
     objects: {
       PasswordResetToken: Prisma.$password_reset_tokensPayload<ExtArgs>[]
+      sheets: Prisma.$sheetsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1650,6 +1875,7 @@ export namespace Prisma {
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     PasswordResetToken<T extends users$PasswordResetTokenArgs<ExtArgs> = {}>(args?: Subset<T, users$PasswordResetTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$password_reset_tokensPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sheets<T extends users$sheetsArgs<ExtArgs> = {}>(args?: Subset<T, users$sheetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2095,6 +2321,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Password_reset_tokensScalarFieldEnum | Password_reset_tokensScalarFieldEnum[]
+  }
+
+  /**
+   * users.sheets
+   */
+  export type users$sheetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    where?: sheetsWhereInput
+    orderBy?: sheetsOrderByWithRelationInput | sheetsOrderByWithRelationInput[]
+    cursor?: sheetsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SheetsScalarFieldEnum | SheetsScalarFieldEnum[]
   }
 
   /**
@@ -3213,6 +3463,2241 @@ export namespace Prisma {
 
 
   /**
+   * Model sheets
+   */
+
+  export type AggregateSheets = {
+    _count: SheetsCountAggregateOutputType | null
+    _avg: SheetsAvgAggregateOutputType | null
+    _sum: SheetsSumAggregateOutputType | null
+    _min: SheetsMinAggregateOutputType | null
+    _max: SheetsMaxAggregateOutputType | null
+  }
+
+  export type SheetsAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SheetsSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SheetsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SheetsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SheetsCountAggregateOutputType = {
+    id: number
+    name: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SheetsAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SheetsSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SheetsMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SheetsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SheetsCountAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SheetsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sheets to aggregate.
+     */
+    where?: sheetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sheets to fetch.
+     */
+    orderBy?: sheetsOrderByWithRelationInput | sheetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: sheetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned sheets
+    **/
+    _count?: true | SheetsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SheetsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SheetsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SheetsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SheetsMaxAggregateInputType
+  }
+
+  export type GetSheetsAggregateType<T extends SheetsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSheets]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSheets[P]>
+      : GetScalarType<T[P], AggregateSheets[P]>
+  }
+
+
+
+
+  export type sheetsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sheetsWhereInput
+    orderBy?: sheetsOrderByWithAggregationInput | sheetsOrderByWithAggregationInput[]
+    by: SheetsScalarFieldEnum[] | SheetsScalarFieldEnum
+    having?: sheetsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SheetsCountAggregateInputType | true
+    _avg?: SheetsAvgAggregateInputType
+    _sum?: SheetsSumAggregateInputType
+    _min?: SheetsMinAggregateInputType
+    _max?: SheetsMaxAggregateInputType
+  }
+
+  export type SheetsGroupByOutputType = {
+    id: number
+    name: string
+    userId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: SheetsCountAggregateOutputType | null
+    _avg: SheetsAvgAggregateOutputType | null
+    _sum: SheetsSumAggregateOutputType | null
+    _min: SheetsMinAggregateOutputType | null
+    _max: SheetsMaxAggregateOutputType | null
+  }
+
+  type GetSheetsGroupByPayload<T extends sheetsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SheetsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SheetsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SheetsGroupByOutputType[P]>
+            : GetScalarType<T[P], SheetsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type sheetsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+    Fields?: boolean | sheets$FieldsArgs<ExtArgs>
+    _count?: boolean | SheetsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sheets"]>
+
+  export type sheetsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sheets"]>
+
+  export type sheetsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sheets"]>
+
+  export type sheetsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type sheetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["sheets"]>
+  export type sheetsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
+    Fields?: boolean | sheets$FieldsArgs<ExtArgs>
+    _count?: boolean | SheetsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type sheetsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type sheetsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $sheetsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "sheets"
+    objects: {
+      user: Prisma.$usersPayload<ExtArgs>
+      Fields: Prisma.$fieldsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      userId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["sheets"]>
+    composites: {}
+  }
+
+  type sheetsGetPayload<S extends boolean | null | undefined | sheetsDefaultArgs> = $Result.GetResult<Prisma.$sheetsPayload, S>
+
+  type sheetsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<sheetsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SheetsCountAggregateInputType | true
+    }
+
+  export interface sheetsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['sheets'], meta: { name: 'sheets' } }
+    /**
+     * Find zero or one Sheets that matches the filter.
+     * @param {sheetsFindUniqueArgs} args - Arguments to find a Sheets
+     * @example
+     * // Get one Sheets
+     * const sheets = await prisma.sheets.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends sheetsFindUniqueArgs>(args: SelectSubset<T, sheetsFindUniqueArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Sheets that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {sheetsFindUniqueOrThrowArgs} args - Arguments to find a Sheets
+     * @example
+     * // Get one Sheets
+     * const sheets = await prisma.sheets.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends sheetsFindUniqueOrThrowArgs>(args: SelectSubset<T, sheetsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sheets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsFindFirstArgs} args - Arguments to find a Sheets
+     * @example
+     * // Get one Sheets
+     * const sheets = await prisma.sheets.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends sheetsFindFirstArgs>(args?: SelectSubset<T, sheetsFindFirstArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sheets that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsFindFirstOrThrowArgs} args - Arguments to find a Sheets
+     * @example
+     * // Get one Sheets
+     * const sheets = await prisma.sheets.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends sheetsFindFirstOrThrowArgs>(args?: SelectSubset<T, sheetsFindFirstOrThrowArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Sheets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sheets
+     * const sheets = await prisma.sheets.findMany()
+     * 
+     * // Get first 10 Sheets
+     * const sheets = await prisma.sheets.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sheetsWithIdOnly = await prisma.sheets.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends sheetsFindManyArgs>(args?: SelectSubset<T, sheetsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Sheets.
+     * @param {sheetsCreateArgs} args - Arguments to create a Sheets.
+     * @example
+     * // Create one Sheets
+     * const Sheets = await prisma.sheets.create({
+     *   data: {
+     *     // ... data to create a Sheets
+     *   }
+     * })
+     * 
+     */
+    create<T extends sheetsCreateArgs>(args: SelectSubset<T, sheetsCreateArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Sheets.
+     * @param {sheetsCreateManyArgs} args - Arguments to create many Sheets.
+     * @example
+     * // Create many Sheets
+     * const sheets = await prisma.sheets.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends sheetsCreateManyArgs>(args?: SelectSubset<T, sheetsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sheets and returns the data saved in the database.
+     * @param {sheetsCreateManyAndReturnArgs} args - Arguments to create many Sheets.
+     * @example
+     * // Create many Sheets
+     * const sheets = await prisma.sheets.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sheets and only return the `id`
+     * const sheetsWithIdOnly = await prisma.sheets.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends sheetsCreateManyAndReturnArgs>(args?: SelectSubset<T, sheetsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Sheets.
+     * @param {sheetsDeleteArgs} args - Arguments to delete one Sheets.
+     * @example
+     * // Delete one Sheets
+     * const Sheets = await prisma.sheets.delete({
+     *   where: {
+     *     // ... filter to delete one Sheets
+     *   }
+     * })
+     * 
+     */
+    delete<T extends sheetsDeleteArgs>(args: SelectSubset<T, sheetsDeleteArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Sheets.
+     * @param {sheetsUpdateArgs} args - Arguments to update one Sheets.
+     * @example
+     * // Update one Sheets
+     * const sheets = await prisma.sheets.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends sheetsUpdateArgs>(args: SelectSubset<T, sheetsUpdateArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Sheets.
+     * @param {sheetsDeleteManyArgs} args - Arguments to filter Sheets to delete.
+     * @example
+     * // Delete a few Sheets
+     * const { count } = await prisma.sheets.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends sheetsDeleteManyArgs>(args?: SelectSubset<T, sheetsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sheets
+     * const sheets = await prisma.sheets.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends sheetsUpdateManyArgs>(args: SelectSubset<T, sheetsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sheets and returns the data updated in the database.
+     * @param {sheetsUpdateManyAndReturnArgs} args - Arguments to update many Sheets.
+     * @example
+     * // Update many Sheets
+     * const sheets = await prisma.sheets.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sheets and only return the `id`
+     * const sheetsWithIdOnly = await prisma.sheets.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends sheetsUpdateManyAndReturnArgs>(args: SelectSubset<T, sheetsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Sheets.
+     * @param {sheetsUpsertArgs} args - Arguments to update or create a Sheets.
+     * @example
+     * // Update or create a Sheets
+     * const sheets = await prisma.sheets.upsert({
+     *   create: {
+     *     // ... data to create a Sheets
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sheets we want to update
+     *   }
+     * })
+     */
+    upsert<T extends sheetsUpsertArgs>(args: SelectSubset<T, sheetsUpsertArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Sheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsCountArgs} args - Arguments to filter Sheets to count.
+     * @example
+     * // Count the number of Sheets
+     * const count = await prisma.sheets.count({
+     *   where: {
+     *     // ... the filter for the Sheets we want to count
+     *   }
+     * })
+    **/
+    count<T extends sheetsCountArgs>(
+      args?: Subset<T, sheetsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SheetsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Sheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SheetsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SheetsAggregateArgs>(args: Subset<T, SheetsAggregateArgs>): Prisma.PrismaPromise<GetSheetsAggregateType<T>>
+
+    /**
+     * Group by Sheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sheetsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends sheetsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: sheetsGroupByArgs['orderBy'] }
+        : { orderBy?: sheetsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, sheetsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSheetsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the sheets model
+   */
+  readonly fields: sheetsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for sheets.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__sheetsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Fields<T extends sheets$FieldsArgs<ExtArgs> = {}>(args?: Subset<T, sheets$FieldsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the sheets model
+   */
+  interface sheetsFieldRefs {
+    readonly id: FieldRef<"sheets", 'Int'>
+    readonly name: FieldRef<"sheets", 'String'>
+    readonly userId: FieldRef<"sheets", 'Int'>
+    readonly createdAt: FieldRef<"sheets", 'DateTime'>
+    readonly updatedAt: FieldRef<"sheets", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * sheets findUnique
+   */
+  export type sheetsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter, which sheets to fetch.
+     */
+    where: sheetsWhereUniqueInput
+  }
+
+  /**
+   * sheets findUniqueOrThrow
+   */
+  export type sheetsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter, which sheets to fetch.
+     */
+    where: sheetsWhereUniqueInput
+  }
+
+  /**
+   * sheets findFirst
+   */
+  export type sheetsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter, which sheets to fetch.
+     */
+    where?: sheetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sheets to fetch.
+     */
+    orderBy?: sheetsOrderByWithRelationInput | sheetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sheets.
+     */
+    cursor?: sheetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sheets.
+     */
+    distinct?: SheetsScalarFieldEnum | SheetsScalarFieldEnum[]
+  }
+
+  /**
+   * sheets findFirstOrThrow
+   */
+  export type sheetsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter, which sheets to fetch.
+     */
+    where?: sheetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sheets to fetch.
+     */
+    orderBy?: sheetsOrderByWithRelationInput | sheetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sheets.
+     */
+    cursor?: sheetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sheets.
+     */
+    distinct?: SheetsScalarFieldEnum | SheetsScalarFieldEnum[]
+  }
+
+  /**
+   * sheets findMany
+   */
+  export type sheetsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter, which sheets to fetch.
+     */
+    where?: sheetsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sheets to fetch.
+     */
+    orderBy?: sheetsOrderByWithRelationInput | sheetsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing sheets.
+     */
+    cursor?: sheetsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sheets.
+     */
+    skip?: number
+    distinct?: SheetsScalarFieldEnum | SheetsScalarFieldEnum[]
+  }
+
+  /**
+   * sheets create
+   */
+  export type sheetsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a sheets.
+     */
+    data: XOR<sheetsCreateInput, sheetsUncheckedCreateInput>
+  }
+
+  /**
+   * sheets createMany
+   */
+  export type sheetsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many sheets.
+     */
+    data: sheetsCreateManyInput | sheetsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sheets createManyAndReturn
+   */
+  export type sheetsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * The data used to create many sheets.
+     */
+    data: sheetsCreateManyInput | sheetsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * sheets update
+   */
+  export type sheetsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a sheets.
+     */
+    data: XOR<sheetsUpdateInput, sheetsUncheckedUpdateInput>
+    /**
+     * Choose, which sheets to update.
+     */
+    where: sheetsWhereUniqueInput
+  }
+
+  /**
+   * sheets updateMany
+   */
+  export type sheetsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update sheets.
+     */
+    data: XOR<sheetsUpdateManyMutationInput, sheetsUncheckedUpdateManyInput>
+    /**
+     * Filter which sheets to update
+     */
+    where?: sheetsWhereInput
+    /**
+     * Limit how many sheets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sheets updateManyAndReturn
+   */
+  export type sheetsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * The data used to update sheets.
+     */
+    data: XOR<sheetsUpdateManyMutationInput, sheetsUncheckedUpdateManyInput>
+    /**
+     * Filter which sheets to update
+     */
+    where?: sheetsWhereInput
+    /**
+     * Limit how many sheets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * sheets upsert
+   */
+  export type sheetsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the sheets to update in case it exists.
+     */
+    where: sheetsWhereUniqueInput
+    /**
+     * In case the sheets found by the `where` argument doesn't exist, create a new sheets with this data.
+     */
+    create: XOR<sheetsCreateInput, sheetsUncheckedCreateInput>
+    /**
+     * In case the sheets was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<sheetsUpdateInput, sheetsUncheckedUpdateInput>
+  }
+
+  /**
+   * sheets delete
+   */
+  export type sheetsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+    /**
+     * Filter which sheets to delete.
+     */
+    where: sheetsWhereUniqueInput
+  }
+
+  /**
+   * sheets deleteMany
+   */
+  export type sheetsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sheets to delete
+     */
+    where?: sheetsWhereInput
+    /**
+     * Limit how many sheets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * sheets.Fields
+   */
+  export type sheets$FieldsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    where?: fieldsWhereInput
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    cursor?: fieldsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FieldsScalarFieldEnum | FieldsScalarFieldEnum[]
+  }
+
+  /**
+   * sheets without action
+   */
+  export type sheetsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sheets
+     */
+    select?: sheetsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sheets
+     */
+    omit?: sheetsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sheetsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model fields
+   */
+
+  export type AggregateFields = {
+    _count: FieldsCountAggregateOutputType | null
+    _avg: FieldsAvgAggregateOutputType | null
+    _sum: FieldsSumAggregateOutputType | null
+    _min: FieldsMinAggregateOutputType | null
+    _max: FieldsMaxAggregateOutputType | null
+  }
+
+  export type FieldsAvgAggregateOutputType = {
+    id: number | null
+    sheetId: number | null
+  }
+
+  export type FieldsSumAggregateOutputType = {
+    id: number | null
+    sheetId: number | null
+  }
+
+  export type FieldsMinAggregateOutputType = {
+    id: number | null
+    sheetId: number | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FieldsMaxAggregateOutputType = {
+    id: number | null
+    sheetId: number | null
+    name: string | null
+    value: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FieldsCountAggregateOutputType = {
+    id: number
+    sheetId: number
+    name: number
+    value: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FieldsAvgAggregateInputType = {
+    id?: true
+    sheetId?: true
+  }
+
+  export type FieldsSumAggregateInputType = {
+    id?: true
+    sheetId?: true
+  }
+
+  export type FieldsMinAggregateInputType = {
+    id?: true
+    sheetId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FieldsMaxAggregateInputType = {
+    id?: true
+    sheetId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FieldsCountAggregateInputType = {
+    id?: true
+    sheetId?: true
+    name?: true
+    value?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FieldsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which fields to aggregate.
+     */
+    where?: fieldsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fields to fetch.
+     */
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: fieldsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fields from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fields.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned fields
+    **/
+    _count?: true | FieldsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FieldsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FieldsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FieldsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FieldsMaxAggregateInputType
+  }
+
+  export type GetFieldsAggregateType<T extends FieldsAggregateArgs> = {
+        [P in keyof T & keyof AggregateFields]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFields[P]>
+      : GetScalarType<T[P], AggregateFields[P]>
+  }
+
+
+
+
+  export type fieldsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fieldsWhereInput
+    orderBy?: fieldsOrderByWithAggregationInput | fieldsOrderByWithAggregationInput[]
+    by: FieldsScalarFieldEnum[] | FieldsScalarFieldEnum
+    having?: fieldsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FieldsCountAggregateInputType | true
+    _avg?: FieldsAvgAggregateInputType
+    _sum?: FieldsSumAggregateInputType
+    _min?: FieldsMinAggregateInputType
+    _max?: FieldsMaxAggregateInputType
+  }
+
+  export type FieldsGroupByOutputType = {
+    id: number
+    sheetId: number
+    name: string
+    value: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: FieldsCountAggregateOutputType | null
+    _avg: FieldsAvgAggregateOutputType | null
+    _sum: FieldsSumAggregateOutputType | null
+    _min: FieldsMinAggregateOutputType | null
+    _max: FieldsMaxAggregateOutputType | null
+  }
+
+  type GetFieldsGroupByPayload<T extends fieldsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FieldsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FieldsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FieldsGroupByOutputType[P]>
+            : GetScalarType<T[P], FieldsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type fieldsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sheetId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fields"]>
+
+  export type fieldsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sheetId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fields"]>
+
+  export type fieldsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sheetId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fields"]>
+
+  export type fieldsSelectScalar = {
+    id?: boolean
+    sheetId?: boolean
+    name?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type fieldsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sheetId" | "name" | "value" | "createdAt" | "updatedAt", ExtArgs["result"]["fields"]>
+  export type fieldsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }
+  export type fieldsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }
+  export type fieldsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+  }
+
+  export type $fieldsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "fields"
+    objects: {
+      sheet: Prisma.$sheetsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      sheetId: number
+      name: string
+      value: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["fields"]>
+    composites: {}
+  }
+
+  type fieldsGetPayload<S extends boolean | null | undefined | fieldsDefaultArgs> = $Result.GetResult<Prisma.$fieldsPayload, S>
+
+  type fieldsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<fieldsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FieldsCountAggregateInputType | true
+    }
+
+  export interface fieldsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['fields'], meta: { name: 'fields' } }
+    /**
+     * Find zero or one Fields that matches the filter.
+     * @param {fieldsFindUniqueArgs} args - Arguments to find a Fields
+     * @example
+     * // Get one Fields
+     * const fields = await prisma.fields.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends fieldsFindUniqueArgs>(args: SelectSubset<T, fieldsFindUniqueArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Fields that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {fieldsFindUniqueOrThrowArgs} args - Arguments to find a Fields
+     * @example
+     * // Get one Fields
+     * const fields = await prisma.fields.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends fieldsFindUniqueOrThrowArgs>(args: SelectSubset<T, fieldsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Fields that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsFindFirstArgs} args - Arguments to find a Fields
+     * @example
+     * // Get one Fields
+     * const fields = await prisma.fields.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends fieldsFindFirstArgs>(args?: SelectSubset<T, fieldsFindFirstArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Fields that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsFindFirstOrThrowArgs} args - Arguments to find a Fields
+     * @example
+     * // Get one Fields
+     * const fields = await prisma.fields.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends fieldsFindFirstOrThrowArgs>(args?: SelectSubset<T, fieldsFindFirstOrThrowArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Fields that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Fields
+     * const fields = await prisma.fields.findMany()
+     * 
+     * // Get first 10 Fields
+     * const fields = await prisma.fields.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fieldsWithIdOnly = await prisma.fields.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends fieldsFindManyArgs>(args?: SelectSubset<T, fieldsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Fields.
+     * @param {fieldsCreateArgs} args - Arguments to create a Fields.
+     * @example
+     * // Create one Fields
+     * const Fields = await prisma.fields.create({
+     *   data: {
+     *     // ... data to create a Fields
+     *   }
+     * })
+     * 
+     */
+    create<T extends fieldsCreateArgs>(args: SelectSubset<T, fieldsCreateArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Fields.
+     * @param {fieldsCreateManyArgs} args - Arguments to create many Fields.
+     * @example
+     * // Create many Fields
+     * const fields = await prisma.fields.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends fieldsCreateManyArgs>(args?: SelectSubset<T, fieldsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Fields and returns the data saved in the database.
+     * @param {fieldsCreateManyAndReturnArgs} args - Arguments to create many Fields.
+     * @example
+     * // Create many Fields
+     * const fields = await prisma.fields.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Fields and only return the `id`
+     * const fieldsWithIdOnly = await prisma.fields.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends fieldsCreateManyAndReturnArgs>(args?: SelectSubset<T, fieldsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Fields.
+     * @param {fieldsDeleteArgs} args - Arguments to delete one Fields.
+     * @example
+     * // Delete one Fields
+     * const Fields = await prisma.fields.delete({
+     *   where: {
+     *     // ... filter to delete one Fields
+     *   }
+     * })
+     * 
+     */
+    delete<T extends fieldsDeleteArgs>(args: SelectSubset<T, fieldsDeleteArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Fields.
+     * @param {fieldsUpdateArgs} args - Arguments to update one Fields.
+     * @example
+     * // Update one Fields
+     * const fields = await prisma.fields.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends fieldsUpdateArgs>(args: SelectSubset<T, fieldsUpdateArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Fields.
+     * @param {fieldsDeleteManyArgs} args - Arguments to filter Fields to delete.
+     * @example
+     * // Delete a few Fields
+     * const { count } = await prisma.fields.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends fieldsDeleteManyArgs>(args?: SelectSubset<T, fieldsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Fields.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Fields
+     * const fields = await prisma.fields.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends fieldsUpdateManyArgs>(args: SelectSubset<T, fieldsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Fields and returns the data updated in the database.
+     * @param {fieldsUpdateManyAndReturnArgs} args - Arguments to update many Fields.
+     * @example
+     * // Update many Fields
+     * const fields = await prisma.fields.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Fields and only return the `id`
+     * const fieldsWithIdOnly = await prisma.fields.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends fieldsUpdateManyAndReturnArgs>(args: SelectSubset<T, fieldsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Fields.
+     * @param {fieldsUpsertArgs} args - Arguments to update or create a Fields.
+     * @example
+     * // Update or create a Fields
+     * const fields = await prisma.fields.upsert({
+     *   create: {
+     *     // ... data to create a Fields
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Fields we want to update
+     *   }
+     * })
+     */
+    upsert<T extends fieldsUpsertArgs>(args: SelectSubset<T, fieldsUpsertArgs<ExtArgs>>): Prisma__fieldsClient<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Fields.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsCountArgs} args - Arguments to filter Fields to count.
+     * @example
+     * // Count the number of Fields
+     * const count = await prisma.fields.count({
+     *   where: {
+     *     // ... the filter for the Fields we want to count
+     *   }
+     * })
+    **/
+    count<T extends fieldsCountArgs>(
+      args?: Subset<T, fieldsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FieldsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Fields.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FieldsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FieldsAggregateArgs>(args: Subset<T, FieldsAggregateArgs>): Prisma.PrismaPromise<GetFieldsAggregateType<T>>
+
+    /**
+     * Group by Fields.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fieldsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends fieldsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: fieldsGroupByArgs['orderBy'] }
+        : { orderBy?: fieldsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, fieldsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFieldsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the fields model
+   */
+  readonly fields: fieldsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for fields.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__fieldsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    sheet<T extends sheetsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, sheetsDefaultArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the fields model
+   */
+  interface fieldsFieldRefs {
+    readonly id: FieldRef<"fields", 'Int'>
+    readonly sheetId: FieldRef<"fields", 'Int'>
+    readonly name: FieldRef<"fields", 'String'>
+    readonly value: FieldRef<"fields", 'String'>
+    readonly createdAt: FieldRef<"fields", 'DateTime'>
+    readonly updatedAt: FieldRef<"fields", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * fields findUnique
+   */
+  export type fieldsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter, which fields to fetch.
+     */
+    where: fieldsWhereUniqueInput
+  }
+
+  /**
+   * fields findUniqueOrThrow
+   */
+  export type fieldsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter, which fields to fetch.
+     */
+    where: fieldsWhereUniqueInput
+  }
+
+  /**
+   * fields findFirst
+   */
+  export type fieldsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter, which fields to fetch.
+     */
+    where?: fieldsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fields to fetch.
+     */
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for fields.
+     */
+    cursor?: fieldsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fields from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fields.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of fields.
+     */
+    distinct?: FieldsScalarFieldEnum | FieldsScalarFieldEnum[]
+  }
+
+  /**
+   * fields findFirstOrThrow
+   */
+  export type fieldsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter, which fields to fetch.
+     */
+    where?: fieldsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fields to fetch.
+     */
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for fields.
+     */
+    cursor?: fieldsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fields from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fields.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of fields.
+     */
+    distinct?: FieldsScalarFieldEnum | FieldsScalarFieldEnum[]
+  }
+
+  /**
+   * fields findMany
+   */
+  export type fieldsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter, which fields to fetch.
+     */
+    where?: fieldsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of fields to fetch.
+     */
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing fields.
+     */
+    cursor?: fieldsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` fields from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` fields.
+     */
+    skip?: number
+    distinct?: FieldsScalarFieldEnum | FieldsScalarFieldEnum[]
+  }
+
+  /**
+   * fields create
+   */
+  export type fieldsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a fields.
+     */
+    data: XOR<fieldsCreateInput, fieldsUncheckedCreateInput>
+  }
+
+  /**
+   * fields createMany
+   */
+  export type fieldsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many fields.
+     */
+    data: fieldsCreateManyInput | fieldsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * fields createManyAndReturn
+   */
+  export type fieldsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * The data used to create many fields.
+     */
+    data: fieldsCreateManyInput | fieldsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * fields update
+   */
+  export type fieldsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a fields.
+     */
+    data: XOR<fieldsUpdateInput, fieldsUncheckedUpdateInput>
+    /**
+     * Choose, which fields to update.
+     */
+    where: fieldsWhereUniqueInput
+  }
+
+  /**
+   * fields updateMany
+   */
+  export type fieldsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update fields.
+     */
+    data: XOR<fieldsUpdateManyMutationInput, fieldsUncheckedUpdateManyInput>
+    /**
+     * Filter which fields to update
+     */
+    where?: fieldsWhereInput
+    /**
+     * Limit how many fields to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * fields updateManyAndReturn
+   */
+  export type fieldsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * The data used to update fields.
+     */
+    data: XOR<fieldsUpdateManyMutationInput, fieldsUncheckedUpdateManyInput>
+    /**
+     * Filter which fields to update
+     */
+    where?: fieldsWhereInput
+    /**
+     * Limit how many fields to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * fields upsert
+   */
+  export type fieldsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the fields to update in case it exists.
+     */
+    where: fieldsWhereUniqueInput
+    /**
+     * In case the fields found by the `where` argument doesn't exist, create a new fields with this data.
+     */
+    create: XOR<fieldsCreateInput, fieldsUncheckedCreateInput>
+    /**
+     * In case the fields was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<fieldsUpdateInput, fieldsUncheckedUpdateInput>
+  }
+
+  /**
+   * fields delete
+   */
+  export type fieldsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    /**
+     * Filter which fields to delete.
+     */
+    where: fieldsWhereUniqueInput
+  }
+
+  /**
+   * fields deleteMany
+   */
+  export type fieldsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which fields to delete
+     */
+    where?: fieldsWhereInput
+    /**
+     * Limit how many fields to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * fields without action
+   */
+  export type fieldsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3250,6 +5735,29 @@ export namespace Prisma {
   export type Password_reset_tokensScalarFieldEnum = (typeof Password_reset_tokensScalarFieldEnum)[keyof typeof Password_reset_tokensScalarFieldEnum]
 
 
+  export const SheetsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SheetsScalarFieldEnum = (typeof SheetsScalarFieldEnum)[keyof typeof SheetsScalarFieldEnum]
+
+
+  export const FieldsScalarFieldEnum: {
+    id: 'id',
+    sheetId: 'sheetId',
+    name: 'name',
+    value: 'value',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FieldsScalarFieldEnum = (typeof FieldsScalarFieldEnum)[keyof typeof FieldsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -3264,6 +5772,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3342,6 +5858,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeFilter<"users"> | Date | string
     PasswordResetToken?: Password_reset_tokensListRelationFilter
+    sheets?: SheetsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -3353,6 +5870,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     PasswordResetToken?: password_reset_tokensOrderByRelationAggregateInput
+    sheets?: sheetsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -3367,6 +5885,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeFilter<"users"> | Date | string
     PasswordResetToken?: Password_reset_tokensListRelationFilter
+    sheets?: SheetsListRelationFilter
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -3454,6 +5973,128 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"password_reset_tokens"> | Date | string
   }
 
+  export type sheetsWhereInput = {
+    AND?: sheetsWhereInput | sheetsWhereInput[]
+    OR?: sheetsWhereInput[]
+    NOT?: sheetsWhereInput | sheetsWhereInput[]
+    id?: IntFilter<"sheets"> | number
+    name?: StringFilter<"sheets"> | string
+    userId?: IntFilter<"sheets"> | number
+    createdAt?: DateTimeFilter<"sheets"> | Date | string
+    updatedAt?: DateTimeFilter<"sheets"> | Date | string
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    Fields?: FieldsListRelationFilter
+  }
+
+  export type sheetsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: usersOrderByWithRelationInput
+    Fields?: fieldsOrderByRelationAggregateInput
+  }
+
+  export type sheetsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: sheetsWhereInput | sheetsWhereInput[]
+    OR?: sheetsWhereInput[]
+    NOT?: sheetsWhereInput | sheetsWhereInput[]
+    name?: StringFilter<"sheets"> | string
+    userId?: IntFilter<"sheets"> | number
+    createdAt?: DateTimeFilter<"sheets"> | Date | string
+    updatedAt?: DateTimeFilter<"sheets"> | Date | string
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    Fields?: FieldsListRelationFilter
+  }, "id">
+
+  export type sheetsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: sheetsCountOrderByAggregateInput
+    _avg?: sheetsAvgOrderByAggregateInput
+    _max?: sheetsMaxOrderByAggregateInput
+    _min?: sheetsMinOrderByAggregateInput
+    _sum?: sheetsSumOrderByAggregateInput
+  }
+
+  export type sheetsScalarWhereWithAggregatesInput = {
+    AND?: sheetsScalarWhereWithAggregatesInput | sheetsScalarWhereWithAggregatesInput[]
+    OR?: sheetsScalarWhereWithAggregatesInput[]
+    NOT?: sheetsScalarWhereWithAggregatesInput | sheetsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"sheets"> | number
+    name?: StringWithAggregatesFilter<"sheets"> | string
+    userId?: IntWithAggregatesFilter<"sheets"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"sheets"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"sheets"> | Date | string
+  }
+
+  export type fieldsWhereInput = {
+    AND?: fieldsWhereInput | fieldsWhereInput[]
+    OR?: fieldsWhereInput[]
+    NOT?: fieldsWhereInput | fieldsWhereInput[]
+    id?: IntFilter<"fields"> | number
+    sheetId?: IntFilter<"fields"> | number
+    name?: StringFilter<"fields"> | string
+    value?: StringNullableFilter<"fields"> | string | null
+    createdAt?: DateTimeFilter<"fields"> | Date | string
+    updatedAt?: DateTimeFilter<"fields"> | Date | string
+    sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+  }
+
+  export type fieldsOrderByWithRelationInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+    name?: SortOrder
+    value?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    sheet?: sheetsOrderByWithRelationInput
+  }
+
+  export type fieldsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: fieldsWhereInput | fieldsWhereInput[]
+    OR?: fieldsWhereInput[]
+    NOT?: fieldsWhereInput | fieldsWhereInput[]
+    sheetId?: IntFilter<"fields"> | number
+    name?: StringFilter<"fields"> | string
+    value?: StringNullableFilter<"fields"> | string | null
+    createdAt?: DateTimeFilter<"fields"> | Date | string
+    updatedAt?: DateTimeFilter<"fields"> | Date | string
+    sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+  }, "id">
+
+  export type fieldsOrderByWithAggregationInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+    name?: SortOrder
+    value?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: fieldsCountOrderByAggregateInput
+    _avg?: fieldsAvgOrderByAggregateInput
+    _max?: fieldsMaxOrderByAggregateInput
+    _min?: fieldsMinOrderByAggregateInput
+    _sum?: fieldsSumOrderByAggregateInput
+  }
+
+  export type fieldsScalarWhereWithAggregatesInput = {
+    AND?: fieldsScalarWhereWithAggregatesInput | fieldsScalarWhereWithAggregatesInput[]
+    OR?: fieldsScalarWhereWithAggregatesInput[]
+    NOT?: fieldsScalarWhereWithAggregatesInput | fieldsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"fields"> | number
+    sheetId?: IntWithAggregatesFilter<"fields"> | number
+    name?: StringWithAggregatesFilter<"fields"> | string
+    value?: StringNullableWithAggregatesFilter<"fields"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"fields"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"fields"> | Date | string
+  }
+
   export type usersCreateInput = {
     email: string
     password: string
@@ -3462,6 +6103,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensCreateNestedManyWithoutUserInput
+    sheets?: sheetsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -3473,6 +6115,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensUncheckedCreateNestedManyWithoutUserInput
+    sheets?: sheetsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersUpdateInput = {
@@ -3483,6 +6126,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUpdateManyWithoutUserNestedInput
+    sheets?: sheetsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -3494,6 +6138,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUncheckedUpdateManyWithoutUserNestedInput
+    sheets?: sheetsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -3577,6 +6222,121 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type sheetsCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: usersCreateNestedOneWithoutSheetsInput
+    Fields?: fieldsCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsUncheckedCreateInput = {
+    id?: number
+    name: string
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: usersUpdateOneRequiredWithoutSheetsNestedInput
+    Fields?: fieldsUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sheetsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Fields?: fieldsUncheckedUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sheetsCreateManyInput = {
+    id?: number
+    name: string
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type sheetsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sheetsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsCreateInput = {
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sheet: sheetsCreateNestedOneWithoutFieldsInput
+  }
+
+  export type fieldsUncheckedCreateInput = {
+    id?: number
+    sheetId: number
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sheet?: sheetsUpdateOneRequiredWithoutFieldsNestedInput
+  }
+
+  export type fieldsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsCreateManyInput = {
+    id?: number
+    sheetId: number
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -3628,7 +6388,17 @@ export namespace Prisma {
     none?: password_reset_tokensWhereInput
   }
 
+  export type SheetsListRelationFilter = {
+    every?: sheetsWhereInput
+    some?: sheetsWhereInput
+    none?: sheetsWhereInput
+  }
+
   export type password_reset_tokensOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type sheetsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -3755,6 +6525,130 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type FieldsListRelationFilter = {
+    every?: fieldsWhereInput
+    some?: fieldsWhereInput
+    none?: fieldsWhereInput
+  }
+
+  export type fieldsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type sheetsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type sheetsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type sheetsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type sheetsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type sheetsSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SheetsScalarRelationFilter = {
+    is?: sheetsWhereInput
+    isNot?: sheetsWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type fieldsCountOrderByAggregateInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type fieldsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type fieldsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type fieldsMinOrderByAggregateInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type fieldsSumOrderByAggregateInput = {
+    id?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type usersCreaterecoveryTokensInput = {
     set: string[]
   }
@@ -3766,11 +6660,25 @@ export namespace Prisma {
     connect?: password_reset_tokensWhereUniqueInput | password_reset_tokensWhereUniqueInput[]
   }
 
+  export type sheetsCreateNestedManyWithoutUserInput = {
+    create?: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput> | sheetsCreateWithoutUserInput[] | sheetsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sheetsCreateOrConnectWithoutUserInput | sheetsCreateOrConnectWithoutUserInput[]
+    createMany?: sheetsCreateManyUserInputEnvelope
+    connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+  }
+
   export type password_reset_tokensUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<password_reset_tokensCreateWithoutUserInput, password_reset_tokensUncheckedCreateWithoutUserInput> | password_reset_tokensCreateWithoutUserInput[] | password_reset_tokensUncheckedCreateWithoutUserInput[]
     connectOrCreate?: password_reset_tokensCreateOrConnectWithoutUserInput | password_reset_tokensCreateOrConnectWithoutUserInput[]
     createMany?: password_reset_tokensCreateManyUserInputEnvelope
     connect?: password_reset_tokensWhereUniqueInput | password_reset_tokensWhereUniqueInput[]
+  }
+
+  export type sheetsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput> | sheetsCreateWithoutUserInput[] | sheetsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sheetsCreateOrConnectWithoutUserInput | sheetsCreateOrConnectWithoutUserInput[]
+    createMany?: sheetsCreateManyUserInputEnvelope
+    connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3800,6 +6708,20 @@ export namespace Prisma {
     deleteMany?: password_reset_tokensScalarWhereInput | password_reset_tokensScalarWhereInput[]
   }
 
+  export type sheetsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput> | sheetsCreateWithoutUserInput[] | sheetsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sheetsCreateOrConnectWithoutUserInput | sheetsCreateOrConnectWithoutUserInput[]
+    upsert?: sheetsUpsertWithWhereUniqueWithoutUserInput | sheetsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: sheetsCreateManyUserInputEnvelope
+    set?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    disconnect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    delete?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    update?: sheetsUpdateWithWhereUniqueWithoutUserInput | sheetsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: sheetsUpdateManyWithWhereWithoutUserInput | sheetsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -3822,6 +6744,20 @@ export namespace Prisma {
     deleteMany?: password_reset_tokensScalarWhereInput | password_reset_tokensScalarWhereInput[]
   }
 
+  export type sheetsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput> | sheetsCreateWithoutUserInput[] | sheetsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sheetsCreateOrConnectWithoutUserInput | sheetsCreateOrConnectWithoutUserInput[]
+    upsert?: sheetsUpsertWithWhereUniqueWithoutUserInput | sheetsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: sheetsCreateManyUserInputEnvelope
+    set?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    disconnect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    delete?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+    update?: sheetsUpdateWithWhereUniqueWithoutUserInput | sheetsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: sheetsUpdateManyWithWhereWithoutUserInput | sheetsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
+  }
+
   export type usersCreateNestedOneWithoutPasswordResetTokenInput = {
     create?: XOR<usersCreateWithoutPasswordResetTokenInput, usersUncheckedCreateWithoutPasswordResetTokenInput>
     connectOrCreate?: usersCreateOrConnectWithoutPasswordResetTokenInput
@@ -3834,6 +6770,80 @@ export namespace Prisma {
     upsert?: usersUpsertWithoutPasswordResetTokenInput
     connect?: usersWhereUniqueInput
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutPasswordResetTokenInput, usersUpdateWithoutPasswordResetTokenInput>, usersUncheckedUpdateWithoutPasswordResetTokenInput>
+  }
+
+  export type usersCreateNestedOneWithoutSheetsInput = {
+    create?: XOR<usersCreateWithoutSheetsInput, usersUncheckedCreateWithoutSheetsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSheetsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type fieldsCreateNestedManyWithoutSheetInput = {
+    create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
+    createMany?: fieldsCreateManySheetInputEnvelope
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+  }
+
+  export type fieldsUncheckedCreateNestedManyWithoutSheetInput = {
+    create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
+    createMany?: fieldsCreateManySheetInputEnvelope
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+  }
+
+  export type usersUpdateOneRequiredWithoutSheetsNestedInput = {
+    create?: XOR<usersCreateWithoutSheetsInput, usersUncheckedCreateWithoutSheetsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSheetsInput
+    upsert?: usersUpsertWithoutSheetsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutSheetsInput, usersUpdateWithoutSheetsInput>, usersUncheckedUpdateWithoutSheetsInput>
+  }
+
+  export type fieldsUpdateManyWithoutSheetNestedInput = {
+    create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
+    upsert?: fieldsUpsertWithWhereUniqueWithoutSheetInput | fieldsUpsertWithWhereUniqueWithoutSheetInput[]
+    createMany?: fieldsCreateManySheetInputEnvelope
+    set?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    disconnect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    delete?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    update?: fieldsUpdateWithWhereUniqueWithoutSheetInput | fieldsUpdateWithWhereUniqueWithoutSheetInput[]
+    updateMany?: fieldsUpdateManyWithWhereWithoutSheetInput | fieldsUpdateManyWithWhereWithoutSheetInput[]
+    deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+  }
+
+  export type fieldsUncheckedUpdateManyWithoutSheetNestedInput = {
+    create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
+    upsert?: fieldsUpsertWithWhereUniqueWithoutSheetInput | fieldsUpsertWithWhereUniqueWithoutSheetInput[]
+    createMany?: fieldsCreateManySheetInputEnvelope
+    set?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    disconnect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    delete?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    update?: fieldsUpdateWithWhereUniqueWithoutSheetInput | fieldsUpdateWithWhereUniqueWithoutSheetInput[]
+    updateMany?: fieldsUpdateManyWithWhereWithoutSheetInput | fieldsUpdateManyWithWhereWithoutSheetInput[]
+    deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+  }
+
+  export type sheetsCreateNestedOneWithoutFieldsInput = {
+    create?: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
+    connectOrCreate?: sheetsCreateOrConnectWithoutFieldsInput
+    connect?: sheetsWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type sheetsUpdateOneRequiredWithoutFieldsNestedInput = {
+    create?: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
+    connectOrCreate?: sheetsCreateOrConnectWithoutFieldsInput
+    upsert?: sheetsUpsertWithoutFieldsInput
+    connect?: sheetsWhereUniqueInput
+    update?: XOR<XOR<sheetsUpdateToOneWithWhereWithoutFieldsInput, sheetsUpdateWithoutFieldsInput>, sheetsUncheckedUpdateWithoutFieldsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3930,6 +6940,48 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type password_reset_tokensCreateWithoutUserInput = {
     token: string
     expiresAt: Date | string
@@ -3950,6 +7002,31 @@ export namespace Prisma {
 
   export type password_reset_tokensCreateManyUserInputEnvelope = {
     data: password_reset_tokensCreateManyUserInput | password_reset_tokensCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type sheetsCreateWithoutUserInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Fields?: fieldsCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsCreateOrConnectWithoutUserInput = {
+    where: sheetsWhereUniqueInput
+    create: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sheetsCreateManyUserInputEnvelope = {
+    data: sheetsCreateManyUserInput | sheetsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -3980,6 +7057,33 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"password_reset_tokens"> | Date | string
   }
 
+  export type sheetsUpsertWithWhereUniqueWithoutUserInput = {
+    where: sheetsWhereUniqueInput
+    update: XOR<sheetsUpdateWithoutUserInput, sheetsUncheckedUpdateWithoutUserInput>
+    create: XOR<sheetsCreateWithoutUserInput, sheetsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sheetsUpdateWithWhereUniqueWithoutUserInput = {
+    where: sheetsWhereUniqueInput
+    data: XOR<sheetsUpdateWithoutUserInput, sheetsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type sheetsUpdateManyWithWhereWithoutUserInput = {
+    where: sheetsScalarWhereInput
+    data: XOR<sheetsUpdateManyMutationInput, sheetsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type sheetsScalarWhereInput = {
+    AND?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
+    OR?: sheetsScalarWhereInput[]
+    NOT?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
+    id?: IntFilter<"sheets"> | number
+    name?: StringFilter<"sheets"> | string
+    userId?: IntFilter<"sheets"> | number
+    createdAt?: DateTimeFilter<"sheets"> | Date | string
+    updatedAt?: DateTimeFilter<"sheets"> | Date | string
+  }
+
   export type usersCreateWithoutPasswordResetTokenInput = {
     email: string
     password: string
@@ -3987,6 +7091,7 @@ export namespace Prisma {
     recoveryTokens?: usersCreaterecoveryTokensInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    sheets?: sheetsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPasswordResetTokenInput = {
@@ -3997,6 +7102,7 @@ export namespace Prisma {
     recoveryTokens?: usersCreaterecoveryTokensInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    sheets?: sheetsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPasswordResetTokenInput = {
@@ -4022,6 +7128,7 @@ export namespace Prisma {
     recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sheets?: sheetsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPasswordResetTokenInput = {
@@ -4032,6 +7139,164 @@ export namespace Prisma {
     recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sheets?: sheetsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersCreateWithoutSheetsInput = {
+    email: string
+    password: string
+    name: string
+    recoveryTokens?: usersCreaterecoveryTokensInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PasswordResetToken?: password_reset_tokensCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutSheetsInput = {
+    id?: number
+    email: string
+    password: string
+    name: string
+    recoveryTokens?: usersCreaterecoveryTokensInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PasswordResetToken?: password_reset_tokensUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutSheetsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutSheetsInput, usersUncheckedCreateWithoutSheetsInput>
+  }
+
+  export type fieldsCreateWithoutSheetInput = {
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsUncheckedCreateWithoutSheetInput = {
+    id?: number
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsCreateOrConnectWithoutSheetInput = {
+    where: fieldsWhereUniqueInput
+    create: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput>
+  }
+
+  export type fieldsCreateManySheetInputEnvelope = {
+    data: fieldsCreateManySheetInput | fieldsCreateManySheetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersUpsertWithoutSheetsInput = {
+    update: XOR<usersUpdateWithoutSheetsInput, usersUncheckedUpdateWithoutSheetsInput>
+    create: XOR<usersCreateWithoutSheetsInput, usersUncheckedCreateWithoutSheetsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutSheetsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutSheetsInput, usersUncheckedUpdateWithoutSheetsInput>
+  }
+
+  export type usersUpdateWithoutSheetsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PasswordResetToken?: password_reset_tokensUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutSheetsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PasswordResetToken?: password_reset_tokensUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type fieldsUpsertWithWhereUniqueWithoutSheetInput = {
+    where: fieldsWhereUniqueInput
+    update: XOR<fieldsUpdateWithoutSheetInput, fieldsUncheckedUpdateWithoutSheetInput>
+    create: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput>
+  }
+
+  export type fieldsUpdateWithWhereUniqueWithoutSheetInput = {
+    where: fieldsWhereUniqueInput
+    data: XOR<fieldsUpdateWithoutSheetInput, fieldsUncheckedUpdateWithoutSheetInput>
+  }
+
+  export type fieldsUpdateManyWithWhereWithoutSheetInput = {
+    where: fieldsScalarWhereInput
+    data: XOR<fieldsUpdateManyMutationInput, fieldsUncheckedUpdateManyWithoutSheetInput>
+  }
+
+  export type fieldsScalarWhereInput = {
+    AND?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+    OR?: fieldsScalarWhereInput[]
+    NOT?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+    id?: IntFilter<"fields"> | number
+    sheetId?: IntFilter<"fields"> | number
+    name?: StringFilter<"fields"> | string
+    value?: StringNullableFilter<"fields"> | string | null
+    createdAt?: DateTimeFilter<"fields"> | Date | string
+    updatedAt?: DateTimeFilter<"fields"> | Date | string
+  }
+
+  export type sheetsCreateWithoutFieldsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: usersCreateNestedOneWithoutSheetsInput
+  }
+
+  export type sheetsUncheckedCreateWithoutFieldsInput = {
+    id?: number
+    name: string
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type sheetsCreateOrConnectWithoutFieldsInput = {
+    where: sheetsWhereUniqueInput
+    create: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
+  }
+
+  export type sheetsUpsertWithoutFieldsInput = {
+    update: XOR<sheetsUpdateWithoutFieldsInput, sheetsUncheckedUpdateWithoutFieldsInput>
+    create: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
+    where?: sheetsWhereInput
+  }
+
+  export type sheetsUpdateToOneWithWhereWithoutFieldsInput = {
+    where?: sheetsWhereInput
+    data: XOR<sheetsUpdateWithoutFieldsInput, sheetsUncheckedUpdateWithoutFieldsInput>
+  }
+
+  export type sheetsUpdateWithoutFieldsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: usersUpdateOneRequiredWithoutSheetsNestedInput
+  }
+
+  export type sheetsUncheckedUpdateWithoutFieldsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type password_reset_tokensCreateManyUserInput = {
@@ -4039,6 +7304,13 @@ export namespace Prisma {
     token: string
     expiresAt: Date | string
     createdAt?: Date | string
+  }
+
+  export type sheetsCreateManyUserInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type password_reset_tokensUpdateWithoutUserInput = {
@@ -4059,6 +7331,59 @@ export namespace Prisma {
     token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sheetsUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Fields?: fieldsUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sheetsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Fields?: fieldsUncheckedUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sheetsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsCreateManySheetInput = {
+    id?: number
+    name: string
+    value?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsUpdateWithoutSheetInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsUncheckedUpdateWithoutSheetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsUncheckedUpdateManyWithoutSheetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

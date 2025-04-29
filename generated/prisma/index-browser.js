@@ -135,6 +135,23 @@ exports.Prisma.Password_reset_tokensScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.SheetsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FieldsScalarFieldEnum = {
+  id: 'id',
+  sheetId: 'sheetId',
+  name: 'name',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,10 +162,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   users: 'users',
-  password_reset_tokens: 'password_reset_tokens'
+  password_reset_tokens: 'password_reset_tokens',
+  sheets: 'sheets',
+  fields: 'fields'
 };
 
 /**
