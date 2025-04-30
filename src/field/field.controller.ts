@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Patch, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch, Query, Put } from '@nestjs/common';
 import { FieldService } from './field.service';
 
 @Controller('fields')
@@ -20,8 +20,9 @@ export class FieldController {
     return this.fieldsService.findOne(Number(id));
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() data: { name?: string; value?: string }) {
+    console.log('update', id, data);
     return this.fieldsService.update(Number(id), data);
   }
 

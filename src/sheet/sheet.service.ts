@@ -14,7 +14,7 @@ export class SheetService {
   }
 
   async findOne(id: number) {
-    return this.prisma.sheets.findUnique({ where: { id } });
+    return this.prisma.sheets.findUnique({ where: { id }, include: { Fields: true } });
   }
 
   async update(id: number, data: { name?: string }) {
