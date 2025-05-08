@@ -6,7 +6,7 @@ export class FieldController {
   constructor(private readonly fieldsService: FieldService) { }
 
   @Post()
-  create(@Body() data: { sheetId: number; name: string; value?: string }) {
+  create(@Body() data: { sheetId: number; name: string; value?: string, x: number, y: number, w: number, h: number, sectionId: number }) {
     return this.fieldsService.create(data);
   }
 

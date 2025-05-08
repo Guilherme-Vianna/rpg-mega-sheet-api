@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { SheetModule } from './sheet/sheet.module';
 import { FieldModule } from './field/field.module';
+import { SectionsModule } from './sections/sections.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { FieldModule } from './field/field.module';
     UserModule,
     AuthModule,
     SheetModule,
-    FieldModule
+    FieldModule,
+    SectionsModule
   ],
 })
 export class AppModule { }

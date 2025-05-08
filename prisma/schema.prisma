@@ -18,6 +18,7 @@ model users {
   updatedAt          DateTime                @updatedAt
   PasswordResetToken password_reset_tokens[]
   sheets             sheets[]
+  sections           sections[]
 }
 
 model password_reset_tokens {
@@ -30,21 +31,40 @@ model password_reset_tokens {
 }
 
 model sheets {
-  id        Int      @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   name      String
   userId    Int
-  user      users    @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  user      users      @relation(fields: [userId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   Fields    fields[]
+  sections  sections[]
+}
+
+model sections {
+  id      Int      @id @default(autoincrement())
+  name    String
+  userId  Int
+  sheetId Int
+  sheet   sheets   @relation(fields: [sheetId], references: [id], onDelete: Cascade)
+  user    users    @relation(fields: [userId], references: [id])
+  Fields  fields[]
 }
 
 model fields {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   sheetId   Int
-  sheet     sheets   @relation(fields: [sheetId], references: [id], onDelete: Cascade)
+  sheet     sheets    @relation(fields: [sheetId], references: [id], onDelete: Cascade)
   name      String
   value     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  color     String?
+  type      String?
+  x         Float     @default(0)
+  y         Float     @default(0)
+  h         Float     @default(0)
+  w         Float     @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  sections  sections? @relation(fields: [sectionId], references: [id])
+  sectionId Int?
 }

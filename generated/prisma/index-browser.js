@@ -143,13 +143,27 @@ exports.Prisma.SheetsScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SectionsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  userId: 'userId',
+  sheetId: 'sheetId'
+};
+
 exports.Prisma.FieldsScalarFieldEnum = {
   id: 'id',
   sheetId: 'sheetId',
   name: 'name',
   value: 'value',
+  color: 'color',
+  type: 'type',
+  x: 'x',
+  y: 'y',
+  h: 'h',
+  w: 'w',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  sectionId: 'sectionId'
 };
 
 exports.Prisma.SortOrder = {
@@ -172,6 +186,7 @@ exports.Prisma.ModelName = {
   users: 'users',
   password_reset_tokens: 'password_reset_tokens',
   sheets: 'sheets',
+  sections: 'sections',
   fields: 'fields'
 };
 

@@ -5,7 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class FieldService {
   constructor(private prisma: PrismaService) { }
 
-  async create(data: { sheetId: number; name: string; value?: string }) {
+  async create(data: { sheetId: number; name: string; value?: string, x: number, y: number, w: number, h: number }) {
     return this.prisma.fields.create({ data });
   }
 

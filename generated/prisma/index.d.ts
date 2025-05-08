@@ -29,6 +29,11 @@ export type password_reset_tokens = $Result.DefaultSelection<Prisma.$password_re
  */
 export type sheets = $Result.DefaultSelection<Prisma.$sheetsPayload>
 /**
+ * Model sections
+ * 
+ */
+export type sections = $Result.DefaultSelection<Prisma.$sectionsPayload>
+/**
  * Model fields
  * 
  */
@@ -188,6 +193,16 @@ export class PrismaClient<
     * ```
     */
   get sheets(): Prisma.sheetsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sections`: Exposes CRUD operations for the **sections** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sections
+    * const sections = await prisma.sections.findMany()
+    * ```
+    */
+  get sections(): Prisma.sectionsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.fields`: Exposes CRUD operations for the **fields** model.
@@ -641,6 +656,7 @@ export namespace Prisma {
     users: 'users',
     password_reset_tokens: 'password_reset_tokens',
     sheets: 'sheets',
+    sections: 'sections',
     fields: 'fields'
   };
 
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "password_reset_tokens" | "sheets" | "fields"
+      modelProps: "users" | "password_reset_tokens" | "sheets" | "sections" | "fields"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -886,6 +902,80 @@ export namespace Prisma {
           }
         }
       }
+      sections: {
+        payload: Prisma.$sectionsPayload<ExtArgs>
+        fields: Prisma.sectionsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.sectionsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.sectionsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          findFirst: {
+            args: Prisma.sectionsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.sectionsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          findMany: {
+            args: Prisma.sectionsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>[]
+          }
+          create: {
+            args: Prisma.sectionsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          createMany: {
+            args: Prisma.sectionsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.sectionsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>[]
+          }
+          delete: {
+            args: Prisma.sectionsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          update: {
+            args: Prisma.sectionsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          deleteMany: {
+            args: Prisma.sectionsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.sectionsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.sectionsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>[]
+          }
+          upsert: {
+            args: Prisma.sectionsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sectionsPayload>
+          }
+          aggregate: {
+            args: Prisma.SectionsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSections>
+          }
+          groupBy: {
+            args: Prisma.sectionsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectionsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.sectionsCountArgs<ExtArgs>
+            result: $Utils.Optional<SectionsCountAggregateOutputType> | number
+          }
+        }
+      }
       fields: {
         payload: Prisma.$fieldsPayload<ExtArgs>
         fields: Prisma.fieldsFieldRefs
@@ -1047,6 +1137,7 @@ export namespace Prisma {
     users?: usersOmit
     password_reset_tokens?: password_reset_tokensOmit
     sheets?: sheetsOmit
+    sections?: sectionsOmit
     fields?: fieldsOmit
   }
 
@@ -1144,11 +1235,13 @@ export namespace Prisma {
   export type UsersCountOutputType = {
     PasswordResetToken: number
     sheets: number
+    sections: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     PasswordResetToken?: boolean | UsersCountOutputTypeCountPasswordResetTokenArgs
     sheets?: boolean | UsersCountOutputTypeCountSheetsArgs
+    sections?: boolean | UsersCountOutputTypeCountSectionsArgs
   }
 
   // Custom InputTypes
@@ -1176,6 +1269,13 @@ export namespace Prisma {
     where?: sheetsWhereInput
   }
 
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sectionsWhereInput
+  }
+
 
   /**
    * Count Type SheetsCountOutputType
@@ -1183,10 +1283,12 @@ export namespace Prisma {
 
   export type SheetsCountOutputType = {
     Fields: number
+    sections: number
   }
 
   export type SheetsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Fields?: boolean | SheetsCountOutputTypeCountFieldsArgs
+    sections?: boolean | SheetsCountOutputTypeCountSectionsArgs
   }
 
   // Custom InputTypes
@@ -1204,6 +1306,44 @@ export namespace Prisma {
    * SheetsCountOutputType without action
    */
   export type SheetsCountOutputTypeCountFieldsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fieldsWhereInput
+  }
+
+  /**
+   * SheetsCountOutputType without action
+   */
+  export type SheetsCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sectionsWhereInput
+  }
+
+
+  /**
+   * Count Type SectionsCountOutputType
+   */
+
+  export type SectionsCountOutputType = {
+    Fields: number
+  }
+
+  export type SectionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Fields?: boolean | SectionsCountOutputTypeCountFieldsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SectionsCountOutputType without action
+   */
+  export type SectionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectionsCountOutputType
+     */
+    select?: SectionsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SectionsCountOutputType without action
+   */
+  export type SectionsCountOutputTypeCountFieldsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: fieldsWhereInput
   }
 
@@ -1424,6 +1564,7 @@ export namespace Prisma {
     updatedAt?: boolean
     PasswordResetToken?: boolean | users$PasswordResetTokenArgs<ExtArgs>
     sheets?: boolean | users$sheetsArgs<ExtArgs>
+    sections?: boolean | users$sectionsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -1461,6 +1602,7 @@ export namespace Prisma {
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     PasswordResetToken?: boolean | users$PasswordResetTokenArgs<ExtArgs>
     sheets?: boolean | users$sheetsArgs<ExtArgs>
+    sections?: boolean | users$sectionsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1471,6 +1613,7 @@ export namespace Prisma {
     objects: {
       PasswordResetToken: Prisma.$password_reset_tokensPayload<ExtArgs>[]
       sheets: Prisma.$sheetsPayload<ExtArgs>[]
+      sections: Prisma.$sectionsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1876,6 +2019,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     PasswordResetToken<T extends users$PasswordResetTokenArgs<ExtArgs> = {}>(args?: Subset<T, users$PasswordResetTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$password_reset_tokensPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sheets<T extends users$sheetsArgs<ExtArgs> = {}>(args?: Subset<T, users$sheetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sections<T extends users$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, users$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2345,6 +2489,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SheetsScalarFieldEnum | SheetsScalarFieldEnum[]
+  }
+
+  /**
+   * users.sections
+   */
+  export type users$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    where?: sectionsWhereInput
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    cursor?: sectionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionsScalarFieldEnum | SectionsScalarFieldEnum[]
   }
 
   /**
@@ -3666,6 +3834,7 @@ export namespace Prisma {
     updatedAt?: boolean
     user?: boolean | usersDefaultArgs<ExtArgs>
     Fields?: boolean | sheets$FieldsArgs<ExtArgs>
+    sections?: boolean | sheets$sectionsArgs<ExtArgs>
     _count?: boolean | SheetsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["sheets"]>
 
@@ -3699,6 +3868,7 @@ export namespace Prisma {
   export type sheetsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | usersDefaultArgs<ExtArgs>
     Fields?: boolean | sheets$FieldsArgs<ExtArgs>
+    sections?: boolean | sheets$sectionsArgs<ExtArgs>
     _count?: boolean | SheetsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type sheetsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3713,6 +3883,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$usersPayload<ExtArgs>
       Fields: Prisma.$fieldsPayload<ExtArgs>[]
+      sections: Prisma.$sectionsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4116,6 +4287,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Fields<T extends sheets$FieldsArgs<ExtArgs> = {}>(args?: Subset<T, sheets$FieldsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sections<T extends sheets$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, sheets$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4570,6 +4742,30 @@ export namespace Prisma {
   }
 
   /**
+   * sheets.sections
+   */
+  export type sheets$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    where?: sectionsWhereInput
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    cursor?: sectionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionsScalarFieldEnum | SectionsScalarFieldEnum[]
+  }
+
+  /**
    * sheets without action
    */
   export type sheetsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4589,6 +4785,1131 @@ export namespace Prisma {
 
 
   /**
+   * Model sections
+   */
+
+  export type AggregateSections = {
+    _count: SectionsCountAggregateOutputType | null
+    _avg: SectionsAvgAggregateOutputType | null
+    _sum: SectionsSumAggregateOutputType | null
+    _min: SectionsMinAggregateOutputType | null
+    _max: SectionsMaxAggregateOutputType | null
+  }
+
+  export type SectionsAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    sheetId: number | null
+  }
+
+  export type SectionsSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    sheetId: number | null
+  }
+
+  export type SectionsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    sheetId: number | null
+  }
+
+  export type SectionsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    sheetId: number | null
+  }
+
+  export type SectionsCountAggregateOutputType = {
+    id: number
+    name: number
+    userId: number
+    sheetId: number
+    _all: number
+  }
+
+
+  export type SectionsAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    sheetId?: true
+  }
+
+  export type SectionsSumAggregateInputType = {
+    id?: true
+    userId?: true
+    sheetId?: true
+  }
+
+  export type SectionsMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    sheetId?: true
+  }
+
+  export type SectionsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    sheetId?: true
+  }
+
+  export type SectionsCountAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    sheetId?: true
+    _all?: true
+  }
+
+  export type SectionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sections to aggregate.
+     */
+    where?: sectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sections to fetch.
+     */
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: sectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned sections
+    **/
+    _count?: true | SectionsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SectionsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SectionsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectionsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectionsMaxAggregateInputType
+  }
+
+  export type GetSectionsAggregateType<T extends SectionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSections]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSections[P]>
+      : GetScalarType<T[P], AggregateSections[P]>
+  }
+
+
+
+
+  export type sectionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sectionsWhereInput
+    orderBy?: sectionsOrderByWithAggregationInput | sectionsOrderByWithAggregationInput[]
+    by: SectionsScalarFieldEnum[] | SectionsScalarFieldEnum
+    having?: sectionsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectionsCountAggregateInputType | true
+    _avg?: SectionsAvgAggregateInputType
+    _sum?: SectionsSumAggregateInputType
+    _min?: SectionsMinAggregateInputType
+    _max?: SectionsMaxAggregateInputType
+  }
+
+  export type SectionsGroupByOutputType = {
+    id: number
+    name: string
+    userId: number
+    sheetId: number
+    _count: SectionsCountAggregateOutputType | null
+    _avg: SectionsAvgAggregateOutputType | null
+    _sum: SectionsSumAggregateOutputType | null
+    _min: SectionsMinAggregateOutputType | null
+    _max: SectionsMaxAggregateOutputType | null
+  }
+
+  type GetSectionsGroupByPayload<T extends sectionsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectionsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectionsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectionsGroupByOutputType[P]>
+            : GetScalarType<T[P], SectionsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type sectionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    sheetId?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+    Fields?: boolean | sections$FieldsArgs<ExtArgs>
+    _count?: boolean | SectionsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sections"]>
+
+  export type sectionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    sheetId?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sections"]>
+
+  export type sectionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    sheetId?: boolean
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sections"]>
+
+  export type sectionsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    sheetId?: boolean
+  }
+
+  export type sectionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "sheetId", ExtArgs["result"]["sections"]>
+  export type sectionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+    Fields?: boolean | sections$FieldsArgs<ExtArgs>
+    _count?: boolean | SectionsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type sectionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type sectionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $sectionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "sections"
+    objects: {
+      sheet: Prisma.$sheetsPayload<ExtArgs>
+      user: Prisma.$usersPayload<ExtArgs>
+      Fields: Prisma.$fieldsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      userId: number
+      sheetId: number
+    }, ExtArgs["result"]["sections"]>
+    composites: {}
+  }
+
+  type sectionsGetPayload<S extends boolean | null | undefined | sectionsDefaultArgs> = $Result.GetResult<Prisma.$sectionsPayload, S>
+
+  type sectionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<sectionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SectionsCountAggregateInputType | true
+    }
+
+  export interface sectionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['sections'], meta: { name: 'sections' } }
+    /**
+     * Find zero or one Sections that matches the filter.
+     * @param {sectionsFindUniqueArgs} args - Arguments to find a Sections
+     * @example
+     * // Get one Sections
+     * const sections = await prisma.sections.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends sectionsFindUniqueArgs>(args: SelectSubset<T, sectionsFindUniqueArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Sections that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {sectionsFindUniqueOrThrowArgs} args - Arguments to find a Sections
+     * @example
+     * // Get one Sections
+     * const sections = await prisma.sections.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends sectionsFindUniqueOrThrowArgs>(args: SelectSubset<T, sectionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsFindFirstArgs} args - Arguments to find a Sections
+     * @example
+     * // Get one Sections
+     * const sections = await prisma.sections.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends sectionsFindFirstArgs>(args?: SelectSubset<T, sectionsFindFirstArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sections that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsFindFirstOrThrowArgs} args - Arguments to find a Sections
+     * @example
+     * // Get one Sections
+     * const sections = await prisma.sections.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends sectionsFindFirstOrThrowArgs>(args?: SelectSubset<T, sectionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Sections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sections
+     * const sections = await prisma.sections.findMany()
+     * 
+     * // Get first 10 Sections
+     * const sections = await prisma.sections.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectionsWithIdOnly = await prisma.sections.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends sectionsFindManyArgs>(args?: SelectSubset<T, sectionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Sections.
+     * @param {sectionsCreateArgs} args - Arguments to create a Sections.
+     * @example
+     * // Create one Sections
+     * const Sections = await prisma.sections.create({
+     *   data: {
+     *     // ... data to create a Sections
+     *   }
+     * })
+     * 
+     */
+    create<T extends sectionsCreateArgs>(args: SelectSubset<T, sectionsCreateArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Sections.
+     * @param {sectionsCreateManyArgs} args - Arguments to create many Sections.
+     * @example
+     * // Create many Sections
+     * const sections = await prisma.sections.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends sectionsCreateManyArgs>(args?: SelectSubset<T, sectionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sections and returns the data saved in the database.
+     * @param {sectionsCreateManyAndReturnArgs} args - Arguments to create many Sections.
+     * @example
+     * // Create many Sections
+     * const sections = await prisma.sections.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sections and only return the `id`
+     * const sectionsWithIdOnly = await prisma.sections.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends sectionsCreateManyAndReturnArgs>(args?: SelectSubset<T, sectionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Sections.
+     * @param {sectionsDeleteArgs} args - Arguments to delete one Sections.
+     * @example
+     * // Delete one Sections
+     * const Sections = await prisma.sections.delete({
+     *   where: {
+     *     // ... filter to delete one Sections
+     *   }
+     * })
+     * 
+     */
+    delete<T extends sectionsDeleteArgs>(args: SelectSubset<T, sectionsDeleteArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Sections.
+     * @param {sectionsUpdateArgs} args - Arguments to update one Sections.
+     * @example
+     * // Update one Sections
+     * const sections = await prisma.sections.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends sectionsUpdateArgs>(args: SelectSubset<T, sectionsUpdateArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Sections.
+     * @param {sectionsDeleteManyArgs} args - Arguments to filter Sections to delete.
+     * @example
+     * // Delete a few Sections
+     * const { count } = await prisma.sections.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends sectionsDeleteManyArgs>(args?: SelectSubset<T, sectionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sections
+     * const sections = await prisma.sections.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends sectionsUpdateManyArgs>(args: SelectSubset<T, sectionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sections and returns the data updated in the database.
+     * @param {sectionsUpdateManyAndReturnArgs} args - Arguments to update many Sections.
+     * @example
+     * // Update many Sections
+     * const sections = await prisma.sections.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sections and only return the `id`
+     * const sectionsWithIdOnly = await prisma.sections.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends sectionsUpdateManyAndReturnArgs>(args: SelectSubset<T, sectionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Sections.
+     * @param {sectionsUpsertArgs} args - Arguments to update or create a Sections.
+     * @example
+     * // Update or create a Sections
+     * const sections = await prisma.sections.upsert({
+     *   create: {
+     *     // ... data to create a Sections
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sections we want to update
+     *   }
+     * })
+     */
+    upsert<T extends sectionsUpsertArgs>(args: SelectSubset<T, sectionsUpsertArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsCountArgs} args - Arguments to filter Sections to count.
+     * @example
+     * // Count the number of Sections
+     * const count = await prisma.sections.count({
+     *   where: {
+     *     // ... the filter for the Sections we want to count
+     *   }
+     * })
+    **/
+    count<T extends sectionsCountArgs>(
+      args?: Subset<T, sectionsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectionsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectionsAggregateArgs>(args: Subset<T, SectionsAggregateArgs>): Prisma.PrismaPromise<GetSectionsAggregateType<T>>
+
+    /**
+     * Group by Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sectionsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends sectionsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: sectionsGroupByArgs['orderBy'] }
+        : { orderBy?: sectionsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, sectionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the sections model
+   */
+  readonly fields: sectionsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for sections.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__sectionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    sheet<T extends sheetsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, sheetsDefaultArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Fields<T extends sections$FieldsArgs<ExtArgs> = {}>(args?: Subset<T, sections$FieldsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fieldsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the sections model
+   */
+  interface sectionsFieldRefs {
+    readonly id: FieldRef<"sections", 'Int'>
+    readonly name: FieldRef<"sections", 'String'>
+    readonly userId: FieldRef<"sections", 'Int'>
+    readonly sheetId: FieldRef<"sections", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * sections findUnique
+   */
+  export type sectionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which sections to fetch.
+     */
+    where: sectionsWhereUniqueInput
+  }
+
+  /**
+   * sections findUniqueOrThrow
+   */
+  export type sectionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which sections to fetch.
+     */
+    where: sectionsWhereUniqueInput
+  }
+
+  /**
+   * sections findFirst
+   */
+  export type sectionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which sections to fetch.
+     */
+    where?: sectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sections to fetch.
+     */
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sections.
+     */
+    cursor?: sectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sections.
+     */
+    distinct?: SectionsScalarFieldEnum | SectionsScalarFieldEnum[]
+  }
+
+  /**
+   * sections findFirstOrThrow
+   */
+  export type sectionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which sections to fetch.
+     */
+    where?: sectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sections to fetch.
+     */
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sections.
+     */
+    cursor?: sectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sections.
+     */
+    distinct?: SectionsScalarFieldEnum | SectionsScalarFieldEnum[]
+  }
+
+  /**
+   * sections findMany
+   */
+  export type sectionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which sections to fetch.
+     */
+    where?: sectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sections to fetch.
+     */
+    orderBy?: sectionsOrderByWithRelationInput | sectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing sections.
+     */
+    cursor?: sectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sections.
+     */
+    skip?: number
+    distinct?: SectionsScalarFieldEnum | SectionsScalarFieldEnum[]
+  }
+
+  /**
+   * sections create
+   */
+  export type sectionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a sections.
+     */
+    data: XOR<sectionsCreateInput, sectionsUncheckedCreateInput>
+  }
+
+  /**
+   * sections createMany
+   */
+  export type sectionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many sections.
+     */
+    data: sectionsCreateManyInput | sectionsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sections createManyAndReturn
+   */
+  export type sectionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * The data used to create many sections.
+     */
+    data: sectionsCreateManyInput | sectionsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * sections update
+   */
+  export type sectionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a sections.
+     */
+    data: XOR<sectionsUpdateInput, sectionsUncheckedUpdateInput>
+    /**
+     * Choose, which sections to update.
+     */
+    where: sectionsWhereUniqueInput
+  }
+
+  /**
+   * sections updateMany
+   */
+  export type sectionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update sections.
+     */
+    data: XOR<sectionsUpdateManyMutationInput, sectionsUncheckedUpdateManyInput>
+    /**
+     * Filter which sections to update
+     */
+    where?: sectionsWhereInput
+    /**
+     * Limit how many sections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sections updateManyAndReturn
+   */
+  export type sectionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * The data used to update sections.
+     */
+    data: XOR<sectionsUpdateManyMutationInput, sectionsUncheckedUpdateManyInput>
+    /**
+     * Filter which sections to update
+     */
+    where?: sectionsWhereInput
+    /**
+     * Limit how many sections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * sections upsert
+   */
+  export type sectionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the sections to update in case it exists.
+     */
+    where: sectionsWhereUniqueInput
+    /**
+     * In case the sections found by the `where` argument doesn't exist, create a new sections with this data.
+     */
+    create: XOR<sectionsCreateInput, sectionsUncheckedCreateInput>
+    /**
+     * In case the sections was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<sectionsUpdateInput, sectionsUncheckedUpdateInput>
+  }
+
+  /**
+   * sections delete
+   */
+  export type sectionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    /**
+     * Filter which sections to delete.
+     */
+    where: sectionsWhereUniqueInput
+  }
+
+  /**
+   * sections deleteMany
+   */
+  export type sectionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sections to delete
+     */
+    where?: sectionsWhereInput
+    /**
+     * Limit how many sections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * sections.Fields
+   */
+  export type sections$FieldsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the fields
+     */
+    select?: fieldsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the fields
+     */
+    omit?: fieldsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fieldsInclude<ExtArgs> | null
+    where?: fieldsWhereInput
+    orderBy?: fieldsOrderByWithRelationInput | fieldsOrderByWithRelationInput[]
+    cursor?: fieldsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FieldsScalarFieldEnum | FieldsScalarFieldEnum[]
+  }
+
+  /**
+   * sections without action
+   */
+  export type sectionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model fields
    */
 
@@ -4603,11 +5924,21 @@ export namespace Prisma {
   export type FieldsAvgAggregateOutputType = {
     id: number | null
     sheetId: number | null
+    x: number | null
+    y: number | null
+    h: number | null
+    w: number | null
+    sectionId: number | null
   }
 
   export type FieldsSumAggregateOutputType = {
     id: number | null
     sheetId: number | null
+    x: number | null
+    y: number | null
+    h: number | null
+    w: number | null
+    sectionId: number | null
   }
 
   export type FieldsMinAggregateOutputType = {
@@ -4615,8 +5946,15 @@ export namespace Prisma {
     sheetId: number | null
     name: string | null
     value: string | null
+    color: string | null
+    type: string | null
+    x: number | null
+    y: number | null
+    h: number | null
+    w: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    sectionId: number | null
   }
 
   export type FieldsMaxAggregateOutputType = {
@@ -4624,8 +5962,15 @@ export namespace Prisma {
     sheetId: number | null
     name: string | null
     value: string | null
+    color: string | null
+    type: string | null
+    x: number | null
+    y: number | null
+    h: number | null
+    w: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    sectionId: number | null
   }
 
   export type FieldsCountAggregateOutputType = {
@@ -4633,8 +5978,15 @@ export namespace Prisma {
     sheetId: number
     name: number
     value: number
+    color: number
+    type: number
+    x: number
+    y: number
+    h: number
+    w: number
     createdAt: number
     updatedAt: number
+    sectionId: number
     _all: number
   }
 
@@ -4642,11 +5994,21 @@ export namespace Prisma {
   export type FieldsAvgAggregateInputType = {
     id?: true
     sheetId?: true
+    x?: true
+    y?: true
+    h?: true
+    w?: true
+    sectionId?: true
   }
 
   export type FieldsSumAggregateInputType = {
     id?: true
     sheetId?: true
+    x?: true
+    y?: true
+    h?: true
+    w?: true
+    sectionId?: true
   }
 
   export type FieldsMinAggregateInputType = {
@@ -4654,8 +6016,15 @@ export namespace Prisma {
     sheetId?: true
     name?: true
     value?: true
+    color?: true
+    type?: true
+    x?: true
+    y?: true
+    h?: true
+    w?: true
     createdAt?: true
     updatedAt?: true
+    sectionId?: true
   }
 
   export type FieldsMaxAggregateInputType = {
@@ -4663,8 +6032,15 @@ export namespace Prisma {
     sheetId?: true
     name?: true
     value?: true
+    color?: true
+    type?: true
+    x?: true
+    y?: true
+    h?: true
+    w?: true
     createdAt?: true
     updatedAt?: true
+    sectionId?: true
   }
 
   export type FieldsCountAggregateInputType = {
@@ -4672,8 +6048,15 @@ export namespace Prisma {
     sheetId?: true
     name?: true
     value?: true
+    color?: true
+    type?: true
+    x?: true
+    y?: true
+    h?: true
+    w?: true
     createdAt?: true
     updatedAt?: true
+    sectionId?: true
     _all?: true
   }
 
@@ -4768,8 +6151,15 @@ export namespace Prisma {
     sheetId: number
     name: string
     value: string | null
+    color: string | null
+    type: string | null
+    x: number
+    y: number
+    h: number
+    w: number
     createdAt: Date
     updatedAt: Date
+    sectionId: number | null
     _count: FieldsCountAggregateOutputType | null
     _avg: FieldsAvgAggregateOutputType | null
     _sum: FieldsSumAggregateOutputType | null
@@ -4796,9 +6186,17 @@ export namespace Prisma {
     sheetId?: boolean
     name?: boolean
     value?: boolean
+    color?: boolean
+    type?: boolean
+    x?: boolean
+    y?: boolean
+    h?: boolean
+    w?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sectionId?: boolean
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }, ExtArgs["result"]["fields"]>
 
   export type fieldsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4806,9 +6204,17 @@ export namespace Prisma {
     sheetId?: boolean
     name?: boolean
     value?: boolean
+    color?: boolean
+    type?: boolean
+    x?: boolean
+    y?: boolean
+    h?: boolean
+    w?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sectionId?: boolean
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }, ExtArgs["result"]["fields"]>
 
   export type fieldsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4816,9 +6222,17 @@ export namespace Prisma {
     sheetId?: boolean
     name?: boolean
     value?: boolean
+    color?: boolean
+    type?: boolean
+    x?: boolean
+    y?: boolean
+    h?: boolean
+    w?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sectionId?: boolean
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }, ExtArgs["result"]["fields"]>
 
   export type fieldsSelectScalar = {
@@ -4826,33 +6240,51 @@ export namespace Prisma {
     sheetId?: boolean
     name?: boolean
     value?: boolean
+    color?: boolean
+    type?: boolean
+    x?: boolean
+    y?: boolean
+    h?: boolean
+    w?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sectionId?: boolean
   }
 
-  export type fieldsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sheetId" | "name" | "value" | "createdAt" | "updatedAt", ExtArgs["result"]["fields"]>
+  export type fieldsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sheetId" | "name" | "value" | "color" | "type" | "x" | "y" | "h" | "w" | "createdAt" | "updatedAt" | "sectionId", ExtArgs["result"]["fields"]>
   export type fieldsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }
   export type fieldsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }
   export type fieldsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sheet?: boolean | sheetsDefaultArgs<ExtArgs>
+    sections?: boolean | fields$sectionsArgs<ExtArgs>
   }
 
   export type $fieldsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "fields"
     objects: {
       sheet: Prisma.$sheetsPayload<ExtArgs>
+      sections: Prisma.$sectionsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       sheetId: number
       name: string
       value: string | null
+      color: string | null
+      type: string | null
+      x: number
+      y: number
+      h: number
+      w: number
       createdAt: Date
       updatedAt: Date
+      sectionId: number | null
     }, ExtArgs["result"]["fields"]>
     composites: {}
   }
@@ -5248,6 +6680,7 @@ export namespace Prisma {
   export interface Prisma__fieldsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sheet<T extends sheetsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, sheetsDefaultArgs<ExtArgs>>): Prisma__sheetsClient<$Result.GetResult<Prisma.$sheetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sections<T extends fields$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, fields$sectionsArgs<ExtArgs>>): Prisma__sectionsClient<$Result.GetResult<Prisma.$sectionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5281,8 +6714,15 @@ export namespace Prisma {
     readonly sheetId: FieldRef<"fields", 'Int'>
     readonly name: FieldRef<"fields", 'String'>
     readonly value: FieldRef<"fields", 'String'>
+    readonly color: FieldRef<"fields", 'String'>
+    readonly type: FieldRef<"fields", 'String'>
+    readonly x: FieldRef<"fields", 'Float'>
+    readonly y: FieldRef<"fields", 'Float'>
+    readonly h: FieldRef<"fields", 'Float'>
+    readonly w: FieldRef<"fields", 'Float'>
     readonly createdAt: FieldRef<"fields", 'DateTime'>
     readonly updatedAt: FieldRef<"fields", 'DateTime'>
+    readonly sectionId: FieldRef<"fields", 'Int'>
   }
     
 
@@ -5679,6 +7119,25 @@ export namespace Prisma {
   }
 
   /**
+   * fields.sections
+   */
+  export type fields$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sections
+     */
+    select?: sectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sections
+     */
+    omit?: sectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sectionsInclude<ExtArgs> | null
+    where?: sectionsWhereInput
+  }
+
+  /**
    * fields without action
    */
   export type fieldsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5746,13 +7205,30 @@ export namespace Prisma {
   export type SheetsScalarFieldEnum = (typeof SheetsScalarFieldEnum)[keyof typeof SheetsScalarFieldEnum]
 
 
+  export const SectionsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    userId: 'userId',
+    sheetId: 'sheetId'
+  };
+
+  export type SectionsScalarFieldEnum = (typeof SectionsScalarFieldEnum)[keyof typeof SectionsScalarFieldEnum]
+
+
   export const FieldsScalarFieldEnum: {
     id: 'id',
     sheetId: 'sheetId',
     name: 'name',
     value: 'value',
+    color: 'color',
+    type: 'type',
+    x: 'x',
+    y: 'y',
+    h: 'h',
+    w: 'w',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    sectionId: 'sectionId'
   };
 
   export type FieldsScalarFieldEnum = (typeof FieldsScalarFieldEnum)[keyof typeof FieldsScalarFieldEnum]
@@ -5859,6 +7335,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"users"> | Date | string
     PasswordResetToken?: Password_reset_tokensListRelationFilter
     sheets?: SheetsListRelationFilter
+    sections?: SectionsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -5871,6 +7348,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     PasswordResetToken?: password_reset_tokensOrderByRelationAggregateInput
     sheets?: sheetsOrderByRelationAggregateInput
+    sections?: sectionsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -5886,6 +7364,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"users"> | Date | string
     PasswordResetToken?: Password_reset_tokensListRelationFilter
     sheets?: SheetsListRelationFilter
+    sections?: SectionsListRelationFilter
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -5984,6 +7463,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"sheets"> | Date | string
     user?: XOR<UsersScalarRelationFilter, usersWhereInput>
     Fields?: FieldsListRelationFilter
+    sections?: SectionsListRelationFilter
   }
 
   export type sheetsOrderByWithRelationInput = {
@@ -5994,6 +7474,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     user?: usersOrderByWithRelationInput
     Fields?: fieldsOrderByRelationAggregateInput
+    sections?: sectionsOrderByRelationAggregateInput
   }
 
   export type sheetsWhereUniqueInput = Prisma.AtLeast<{
@@ -6007,6 +7488,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"sheets"> | Date | string
     user?: XOR<UsersScalarRelationFilter, usersWhereInput>
     Fields?: FieldsListRelationFilter
+    sections?: SectionsListRelationFilter
   }, "id">
 
   export type sheetsOrderByWithAggregationInput = {
@@ -6033,6 +7515,64 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"sheets"> | Date | string
   }
 
+  export type sectionsWhereInput = {
+    AND?: sectionsWhereInput | sectionsWhereInput[]
+    OR?: sectionsWhereInput[]
+    NOT?: sectionsWhereInput | sectionsWhereInput[]
+    id?: IntFilter<"sections"> | number
+    name?: StringFilter<"sections"> | string
+    userId?: IntFilter<"sections"> | number
+    sheetId?: IntFilter<"sections"> | number
+    sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    Fields?: FieldsListRelationFilter
+  }
+
+  export type sectionsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+    sheet?: sheetsOrderByWithRelationInput
+    user?: usersOrderByWithRelationInput
+    Fields?: fieldsOrderByRelationAggregateInput
+  }
+
+  export type sectionsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: sectionsWhereInput | sectionsWhereInput[]
+    OR?: sectionsWhereInput[]
+    NOT?: sectionsWhereInput | sectionsWhereInput[]
+    name?: StringFilter<"sections"> | string
+    userId?: IntFilter<"sections"> | number
+    sheetId?: IntFilter<"sections"> | number
+    sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    Fields?: FieldsListRelationFilter
+  }, "id">
+
+  export type sectionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+    _count?: sectionsCountOrderByAggregateInput
+    _avg?: sectionsAvgOrderByAggregateInput
+    _max?: sectionsMaxOrderByAggregateInput
+    _min?: sectionsMinOrderByAggregateInput
+    _sum?: sectionsSumOrderByAggregateInput
+  }
+
+  export type sectionsScalarWhereWithAggregatesInput = {
+    AND?: sectionsScalarWhereWithAggregatesInput | sectionsScalarWhereWithAggregatesInput[]
+    OR?: sectionsScalarWhereWithAggregatesInput[]
+    NOT?: sectionsScalarWhereWithAggregatesInput | sectionsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"sections"> | number
+    name?: StringWithAggregatesFilter<"sections"> | string
+    userId?: IntWithAggregatesFilter<"sections"> | number
+    sheetId?: IntWithAggregatesFilter<"sections"> | number
+  }
+
   export type fieldsWhereInput = {
     AND?: fieldsWhereInput | fieldsWhereInput[]
     OR?: fieldsWhereInput[]
@@ -6041,9 +7581,17 @@ export namespace Prisma {
     sheetId?: IntFilter<"fields"> | number
     name?: StringFilter<"fields"> | string
     value?: StringNullableFilter<"fields"> | string | null
+    color?: StringNullableFilter<"fields"> | string | null
+    type?: StringNullableFilter<"fields"> | string | null
+    x?: FloatFilter<"fields"> | number
+    y?: FloatFilter<"fields"> | number
+    h?: FloatFilter<"fields"> | number
+    w?: FloatFilter<"fields"> | number
     createdAt?: DateTimeFilter<"fields"> | Date | string
     updatedAt?: DateTimeFilter<"fields"> | Date | string
+    sectionId?: IntNullableFilter<"fields"> | number | null
     sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+    sections?: XOR<SectionsNullableScalarRelationFilter, sectionsWhereInput> | null
   }
 
   export type fieldsOrderByWithRelationInput = {
@@ -6051,9 +7599,17 @@ export namespace Prisma {
     sheetId?: SortOrder
     name?: SortOrder
     value?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sectionId?: SortOrderInput | SortOrder
     sheet?: sheetsOrderByWithRelationInput
+    sections?: sectionsOrderByWithRelationInput
   }
 
   export type fieldsWhereUniqueInput = Prisma.AtLeast<{
@@ -6064,9 +7620,17 @@ export namespace Prisma {
     sheetId?: IntFilter<"fields"> | number
     name?: StringFilter<"fields"> | string
     value?: StringNullableFilter<"fields"> | string | null
+    color?: StringNullableFilter<"fields"> | string | null
+    type?: StringNullableFilter<"fields"> | string | null
+    x?: FloatFilter<"fields"> | number
+    y?: FloatFilter<"fields"> | number
+    h?: FloatFilter<"fields"> | number
+    w?: FloatFilter<"fields"> | number
     createdAt?: DateTimeFilter<"fields"> | Date | string
     updatedAt?: DateTimeFilter<"fields"> | Date | string
+    sectionId?: IntNullableFilter<"fields"> | number | null
     sheet?: XOR<SheetsScalarRelationFilter, sheetsWhereInput>
+    sections?: XOR<SectionsNullableScalarRelationFilter, sectionsWhereInput> | null
   }, "id">
 
   export type fieldsOrderByWithAggregationInput = {
@@ -6074,8 +7638,15 @@ export namespace Prisma {
     sheetId?: SortOrder
     name?: SortOrder
     value?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sectionId?: SortOrderInput | SortOrder
     _count?: fieldsCountOrderByAggregateInput
     _avg?: fieldsAvgOrderByAggregateInput
     _max?: fieldsMaxOrderByAggregateInput
@@ -6091,8 +7662,15 @@ export namespace Prisma {
     sheetId?: IntWithAggregatesFilter<"fields"> | number
     name?: StringWithAggregatesFilter<"fields"> | string
     value?: StringNullableWithAggregatesFilter<"fields"> | string | null
+    color?: StringNullableWithAggregatesFilter<"fields"> | string | null
+    type?: StringNullableWithAggregatesFilter<"fields"> | string | null
+    x?: FloatWithAggregatesFilter<"fields"> | number
+    y?: FloatWithAggregatesFilter<"fields"> | number
+    h?: FloatWithAggregatesFilter<"fields"> | number
+    w?: FloatWithAggregatesFilter<"fields"> | number
     createdAt?: DateTimeWithAggregatesFilter<"fields"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"fields"> | Date | string
+    sectionId?: IntNullableWithAggregatesFilter<"fields"> | number | null
   }
 
   export type usersCreateInput = {
@@ -6104,6 +7682,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensCreateNestedManyWithoutUserInput
     sheets?: sheetsCreateNestedManyWithoutUserInput
+    sections?: sectionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -6116,6 +7695,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensUncheckedCreateNestedManyWithoutUserInput
     sheets?: sheetsUncheckedCreateNestedManyWithoutUserInput
+    sections?: sectionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersUpdateInput = {
@@ -6127,6 +7707,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUpdateManyWithoutUserNestedInput
     sheets?: sheetsUpdateManyWithoutUserNestedInput
+    sections?: sectionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -6139,6 +7720,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUncheckedUpdateManyWithoutUserNestedInput
     sheets?: sheetsUncheckedUpdateManyWithoutUserNestedInput
+    sections?: sectionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -6228,6 +7810,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: usersCreateNestedOneWithoutSheetsInput
     Fields?: fieldsCreateNestedManyWithoutSheetInput
+    sections?: sectionsCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsUncheckedCreateInput = {
@@ -6237,6 +7820,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Fields?: fieldsUncheckedCreateNestedManyWithoutSheetInput
+    sections?: sectionsUncheckedCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsUpdateInput = {
@@ -6245,6 +7829,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: usersUpdateOneRequiredWithoutSheetsNestedInput
     Fields?: fieldsUpdateManyWithoutSheetNestedInput
+    sections?: sectionsUpdateManyWithoutSheetNestedInput
   }
 
   export type sheetsUncheckedUpdateInput = {
@@ -6254,6 +7839,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Fields?: fieldsUncheckedUpdateManyWithoutSheetNestedInput
+    sections?: sectionsUncheckedUpdateManyWithoutSheetNestedInput
   }
 
   export type sheetsCreateManyInput = {
@@ -6278,12 +7864,67 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type sectionsCreateInput = {
+    name: string
+    sheet: sheetsCreateNestedOneWithoutSectionsInput
+    user: usersCreateNestedOneWithoutSectionsInput
+    Fields?: fieldsCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsUncheckedCreateInput = {
+    id?: number
+    name: string
+    userId: number
+    sheetId: number
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    sheet?: sheetsUpdateOneRequiredWithoutSectionsNestedInput
+    user?: usersUpdateOneRequiredWithoutSectionsNestedInput
+    Fields?: fieldsUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+    Fields?: fieldsUncheckedUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsCreateManyInput = {
+    id?: number
+    name: string
+    userId: number
+    sheetId: number
+  }
+
+  export type sectionsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sectionsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type fieldsCreateInput = {
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     sheet: sheetsCreateNestedOneWithoutFieldsInput
+    sections?: sectionsCreateNestedOneWithoutFieldsInput
   }
 
   export type fieldsUncheckedCreateInput = {
@@ -6291,16 +7932,30 @@ export namespace Prisma {
     sheetId: number
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sectionId?: number | null
   }
 
   export type fieldsUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sheet?: sheetsUpdateOneRequiredWithoutFieldsNestedInput
+    sections?: sectionsUpdateOneWithoutFieldsNestedInput
   }
 
   export type fieldsUncheckedUpdateInput = {
@@ -6308,8 +7963,15 @@ export namespace Prisma {
     sheetId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type fieldsCreateManyInput = {
@@ -6317,13 +7979,26 @@ export namespace Prisma {
     sheetId: number
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sectionId?: number | null
   }
 
   export type fieldsUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6333,8 +8008,15 @@ export namespace Prisma {
     sheetId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6394,11 +8076,21 @@ export namespace Prisma {
     none?: sheetsWhereInput
   }
 
+  export type SectionsListRelationFilter = {
+    every?: sectionsWhereInput
+    some?: sectionsWhereInput
+    none?: sectionsWhereInput
+  }
+
   export type password_reset_tokensOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type sheetsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type sectionsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6569,6 +8261,44 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type SheetsScalarRelationFilter = {
+    is?: sheetsWhereInput
+    isNot?: sheetsWhereInput
+  }
+
+  export type sectionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type sectionsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type sectionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type sectionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+  }
+
+  export type sectionsSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sheetId?: SortOrder
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6584,9 +8314,31 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type SheetsScalarRelationFilter = {
-    is?: sheetsWhereInput
-    isNot?: sheetsWhereInput
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SectionsNullableScalarRelationFilter = {
+    is?: sectionsWhereInput | null
+    isNot?: sectionsWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -6599,13 +8351,25 @@ export namespace Prisma {
     sheetId?: SortOrder
     name?: SortOrder
     value?: SortOrder
+    color?: SortOrder
+    type?: SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sectionId?: SortOrder
   }
 
   export type fieldsAvgOrderByAggregateInput = {
     id?: SortOrder
     sheetId?: SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
+    sectionId?: SortOrder
   }
 
   export type fieldsMaxOrderByAggregateInput = {
@@ -6613,8 +8377,15 @@ export namespace Prisma {
     sheetId?: SortOrder
     name?: SortOrder
     value?: SortOrder
+    color?: SortOrder
+    type?: SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sectionId?: SortOrder
   }
 
   export type fieldsMinOrderByAggregateInput = {
@@ -6622,13 +8393,25 @@ export namespace Prisma {
     sheetId?: SortOrder
     name?: SortOrder
     value?: SortOrder
+    color?: SortOrder
+    type?: SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sectionId?: SortOrder
   }
 
   export type fieldsSumOrderByAggregateInput = {
     id?: SortOrder
     sheetId?: SortOrder
+    x?: SortOrder
+    y?: SortOrder
+    h?: SortOrder
+    w?: SortOrder
+    sectionId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6649,6 +8432,38 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type usersCreaterecoveryTokensInput = {
     set: string[]
   }
@@ -6667,6 +8482,13 @@ export namespace Prisma {
     connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
   }
 
+  export type sectionsCreateNestedManyWithoutUserInput = {
+    create?: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput> | sectionsCreateWithoutUserInput[] | sectionsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutUserInput | sectionsCreateOrConnectWithoutUserInput[]
+    createMany?: sectionsCreateManyUserInputEnvelope
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+  }
+
   export type password_reset_tokensUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<password_reset_tokensCreateWithoutUserInput, password_reset_tokensUncheckedCreateWithoutUserInput> | password_reset_tokensCreateWithoutUserInput[] | password_reset_tokensUncheckedCreateWithoutUserInput[]
     connectOrCreate?: password_reset_tokensCreateOrConnectWithoutUserInput | password_reset_tokensCreateOrConnectWithoutUserInput[]
@@ -6679,6 +8501,13 @@ export namespace Prisma {
     connectOrCreate?: sheetsCreateOrConnectWithoutUserInput | sheetsCreateOrConnectWithoutUserInput[]
     createMany?: sheetsCreateManyUserInputEnvelope
     connect?: sheetsWhereUniqueInput | sheetsWhereUniqueInput[]
+  }
+
+  export type sectionsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput> | sectionsCreateWithoutUserInput[] | sectionsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutUserInput | sectionsCreateOrConnectWithoutUserInput[]
+    createMany?: sectionsCreateManyUserInputEnvelope
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6722,6 +8551,20 @@ export namespace Prisma {
     deleteMany?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
   }
 
+  export type sectionsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput> | sectionsCreateWithoutUserInput[] | sectionsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutUserInput | sectionsCreateOrConnectWithoutUserInput[]
+    upsert?: sectionsUpsertWithWhereUniqueWithoutUserInput | sectionsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: sectionsCreateManyUserInputEnvelope
+    set?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    disconnect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    delete?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    update?: sectionsUpdateWithWhereUniqueWithoutUserInput | sectionsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: sectionsUpdateManyWithWhereWithoutUserInput | sectionsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -6758,6 +8601,20 @@ export namespace Prisma {
     deleteMany?: sheetsScalarWhereInput | sheetsScalarWhereInput[]
   }
 
+  export type sectionsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput> | sectionsCreateWithoutUserInput[] | sectionsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutUserInput | sectionsCreateOrConnectWithoutUserInput[]
+    upsert?: sectionsUpsertWithWhereUniqueWithoutUserInput | sectionsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: sectionsCreateManyUserInputEnvelope
+    set?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    disconnect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    delete?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    update?: sectionsUpdateWithWhereUniqueWithoutUserInput | sectionsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: sectionsUpdateManyWithWhereWithoutUserInput | sectionsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+  }
+
   export type usersCreateNestedOneWithoutPasswordResetTokenInput = {
     create?: XOR<usersCreateWithoutPasswordResetTokenInput, usersUncheckedCreateWithoutPasswordResetTokenInput>
     connectOrCreate?: usersCreateOrConnectWithoutPasswordResetTokenInput
@@ -6785,11 +8642,25 @@ export namespace Prisma {
     connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
   }
 
+  export type sectionsCreateNestedManyWithoutSheetInput = {
+    create?: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput> | sectionsCreateWithoutSheetInput[] | sectionsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutSheetInput | sectionsCreateOrConnectWithoutSheetInput[]
+    createMany?: sectionsCreateManySheetInputEnvelope
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+  }
+
   export type fieldsUncheckedCreateNestedManyWithoutSheetInput = {
     create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
     connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
     createMany?: fieldsCreateManySheetInputEnvelope
     connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+  }
+
+  export type sectionsUncheckedCreateNestedManyWithoutSheetInput = {
+    create?: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput> | sectionsCreateWithoutSheetInput[] | sectionsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutSheetInput | sectionsCreateOrConnectWithoutSheetInput[]
+    createMany?: sectionsCreateManySheetInputEnvelope
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
   }
 
   export type usersUpdateOneRequiredWithoutSheetsNestedInput = {
@@ -6814,6 +8685,20 @@ export namespace Prisma {
     deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
   }
 
+  export type sectionsUpdateManyWithoutSheetNestedInput = {
+    create?: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput> | sectionsCreateWithoutSheetInput[] | sectionsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutSheetInput | sectionsCreateOrConnectWithoutSheetInput[]
+    upsert?: sectionsUpsertWithWhereUniqueWithoutSheetInput | sectionsUpsertWithWhereUniqueWithoutSheetInput[]
+    createMany?: sectionsCreateManySheetInputEnvelope
+    set?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    disconnect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    delete?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    update?: sectionsUpdateWithWhereUniqueWithoutSheetInput | sectionsUpdateWithWhereUniqueWithoutSheetInput[]
+    updateMany?: sectionsUpdateManyWithWhereWithoutSheetInput | sectionsUpdateManyWithWhereWithoutSheetInput[]
+    deleteMany?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+  }
+
   export type fieldsUncheckedUpdateManyWithoutSheetNestedInput = {
     create?: XOR<fieldsCreateWithoutSheetInput, fieldsUncheckedCreateWithoutSheetInput> | fieldsCreateWithoutSheetInput[] | fieldsUncheckedCreateWithoutSheetInput[]
     connectOrCreate?: fieldsCreateOrConnectWithoutSheetInput | fieldsCreateOrConnectWithoutSheetInput[]
@@ -6828,14 +8713,112 @@ export namespace Prisma {
     deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
   }
 
+  export type sectionsUncheckedUpdateManyWithoutSheetNestedInput = {
+    create?: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput> | sectionsCreateWithoutSheetInput[] | sectionsUncheckedCreateWithoutSheetInput[]
+    connectOrCreate?: sectionsCreateOrConnectWithoutSheetInput | sectionsCreateOrConnectWithoutSheetInput[]
+    upsert?: sectionsUpsertWithWhereUniqueWithoutSheetInput | sectionsUpsertWithWhereUniqueWithoutSheetInput[]
+    createMany?: sectionsCreateManySheetInputEnvelope
+    set?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    disconnect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    delete?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    connect?: sectionsWhereUniqueInput | sectionsWhereUniqueInput[]
+    update?: sectionsUpdateWithWhereUniqueWithoutSheetInput | sectionsUpdateWithWhereUniqueWithoutSheetInput[]
+    updateMany?: sectionsUpdateManyWithWhereWithoutSheetInput | sectionsUpdateManyWithWhereWithoutSheetInput[]
+    deleteMany?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+  }
+
+  export type sheetsCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<sheetsCreateWithoutSectionsInput, sheetsUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: sheetsCreateOrConnectWithoutSectionsInput
+    connect?: sheetsWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<usersCreateWithoutSectionsInput, usersUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSectionsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type fieldsCreateNestedManyWithoutSectionsInput = {
+    create?: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput> | fieldsCreateWithoutSectionsInput[] | fieldsUncheckedCreateWithoutSectionsInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSectionsInput | fieldsCreateOrConnectWithoutSectionsInput[]
+    createMany?: fieldsCreateManySectionsInputEnvelope
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+  }
+
+  export type fieldsUncheckedCreateNestedManyWithoutSectionsInput = {
+    create?: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput> | fieldsCreateWithoutSectionsInput[] | fieldsUncheckedCreateWithoutSectionsInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSectionsInput | fieldsCreateOrConnectWithoutSectionsInput[]
+    createMany?: fieldsCreateManySectionsInputEnvelope
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+  }
+
+  export type sheetsUpdateOneRequiredWithoutSectionsNestedInput = {
+    create?: XOR<sheetsCreateWithoutSectionsInput, sheetsUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: sheetsCreateOrConnectWithoutSectionsInput
+    upsert?: sheetsUpsertWithoutSectionsInput
+    connect?: sheetsWhereUniqueInput
+    update?: XOR<XOR<sheetsUpdateToOneWithWhereWithoutSectionsInput, sheetsUpdateWithoutSectionsInput>, sheetsUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutSectionsNestedInput = {
+    create?: XOR<usersCreateWithoutSectionsInput, usersUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSectionsInput
+    upsert?: usersUpsertWithoutSectionsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutSectionsInput, usersUpdateWithoutSectionsInput>, usersUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type fieldsUpdateManyWithoutSectionsNestedInput = {
+    create?: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput> | fieldsCreateWithoutSectionsInput[] | fieldsUncheckedCreateWithoutSectionsInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSectionsInput | fieldsCreateOrConnectWithoutSectionsInput[]
+    upsert?: fieldsUpsertWithWhereUniqueWithoutSectionsInput | fieldsUpsertWithWhereUniqueWithoutSectionsInput[]
+    createMany?: fieldsCreateManySectionsInputEnvelope
+    set?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    disconnect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    delete?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    update?: fieldsUpdateWithWhereUniqueWithoutSectionsInput | fieldsUpdateWithWhereUniqueWithoutSectionsInput[]
+    updateMany?: fieldsUpdateManyWithWhereWithoutSectionsInput | fieldsUpdateManyWithWhereWithoutSectionsInput[]
+    deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+  }
+
+  export type fieldsUncheckedUpdateManyWithoutSectionsNestedInput = {
+    create?: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput> | fieldsCreateWithoutSectionsInput[] | fieldsUncheckedCreateWithoutSectionsInput[]
+    connectOrCreate?: fieldsCreateOrConnectWithoutSectionsInput | fieldsCreateOrConnectWithoutSectionsInput[]
+    upsert?: fieldsUpsertWithWhereUniqueWithoutSectionsInput | fieldsUpsertWithWhereUniqueWithoutSectionsInput[]
+    createMany?: fieldsCreateManySectionsInputEnvelope
+    set?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    disconnect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    delete?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    connect?: fieldsWhereUniqueInput | fieldsWhereUniqueInput[]
+    update?: fieldsUpdateWithWhereUniqueWithoutSectionsInput | fieldsUpdateWithWhereUniqueWithoutSectionsInput[]
+    updateMany?: fieldsUpdateManyWithWhereWithoutSectionsInput | fieldsUpdateManyWithWhereWithoutSectionsInput[]
+    deleteMany?: fieldsScalarWhereInput | fieldsScalarWhereInput[]
+  }
+
   export type sheetsCreateNestedOneWithoutFieldsInput = {
     create?: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
     connectOrCreate?: sheetsCreateOrConnectWithoutFieldsInput
     connect?: sheetsWhereUniqueInput
   }
 
+  export type sectionsCreateNestedOneWithoutFieldsInput = {
+    create?: XOR<sectionsCreateWithoutFieldsInput, sectionsUncheckedCreateWithoutFieldsInput>
+    connectOrCreate?: sectionsCreateOrConnectWithoutFieldsInput
+    connect?: sectionsWhereUniqueInput
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type sheetsUpdateOneRequiredWithoutFieldsNestedInput = {
@@ -6844,6 +8827,24 @@ export namespace Prisma {
     upsert?: sheetsUpsertWithoutFieldsInput
     connect?: sheetsWhereUniqueInput
     update?: XOR<XOR<sheetsUpdateToOneWithWhereWithoutFieldsInput, sheetsUpdateWithoutFieldsInput>, sheetsUncheckedUpdateWithoutFieldsInput>
+  }
+
+  export type sectionsUpdateOneWithoutFieldsNestedInput = {
+    create?: XOR<sectionsCreateWithoutFieldsInput, sectionsUncheckedCreateWithoutFieldsInput>
+    connectOrCreate?: sectionsCreateOrConnectWithoutFieldsInput
+    upsert?: sectionsUpsertWithoutFieldsInput
+    disconnect?: sectionsWhereInput | boolean
+    delete?: sectionsWhereInput | boolean
+    connect?: sectionsWhereUniqueInput
+    update?: XOR<XOR<sectionsUpdateToOneWithWhereWithoutFieldsInput, sectionsUpdateWithoutFieldsInput>, sectionsUncheckedUpdateWithoutFieldsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6954,6 +8955,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6971,7 +8983,23 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -6979,7 +9007,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type password_reset_tokensCreateWithoutUserInput = {
@@ -7010,6 +9054,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Fields?: fieldsCreateNestedManyWithoutSheetInput
+    sections?: sectionsCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsUncheckedCreateWithoutUserInput = {
@@ -7018,6 +9063,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Fields?: fieldsUncheckedCreateNestedManyWithoutSheetInput
+    sections?: sectionsUncheckedCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsCreateOrConnectWithoutUserInput = {
@@ -7027,6 +9073,29 @@ export namespace Prisma {
 
   export type sheetsCreateManyUserInputEnvelope = {
     data: sheetsCreateManyUserInput | sheetsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type sectionsCreateWithoutUserInput = {
+    name: string
+    sheet: sheetsCreateNestedOneWithoutSectionsInput
+    Fields?: fieldsCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    sheetId: number
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsCreateOrConnectWithoutUserInput = {
+    where: sectionsWhereUniqueInput
+    create: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sectionsCreateManyUserInputEnvelope = {
+    data: sectionsCreateManyUserInput | sectionsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7084,6 +9153,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"sheets"> | Date | string
   }
 
+  export type sectionsUpsertWithWhereUniqueWithoutUserInput = {
+    where: sectionsWhereUniqueInput
+    update: XOR<sectionsUpdateWithoutUserInput, sectionsUncheckedUpdateWithoutUserInput>
+    create: XOR<sectionsCreateWithoutUserInput, sectionsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sectionsUpdateWithWhereUniqueWithoutUserInput = {
+    where: sectionsWhereUniqueInput
+    data: XOR<sectionsUpdateWithoutUserInput, sectionsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type sectionsUpdateManyWithWhereWithoutUserInput = {
+    where: sectionsScalarWhereInput
+    data: XOR<sectionsUpdateManyMutationInput, sectionsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type sectionsScalarWhereInput = {
+    AND?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+    OR?: sectionsScalarWhereInput[]
+    NOT?: sectionsScalarWhereInput | sectionsScalarWhereInput[]
+    id?: IntFilter<"sections"> | number
+    name?: StringFilter<"sections"> | string
+    userId?: IntFilter<"sections"> | number
+    sheetId?: IntFilter<"sections"> | number
+  }
+
   export type usersCreateWithoutPasswordResetTokenInput = {
     email: string
     password: string
@@ -7092,6 +9187,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sheets?: sheetsCreateNestedManyWithoutUserInput
+    sections?: sectionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPasswordResetTokenInput = {
@@ -7103,6 +9199,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sheets?: sheetsUncheckedCreateNestedManyWithoutUserInput
+    sections?: sectionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPasswordResetTokenInput = {
@@ -7129,6 +9226,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sheets?: sheetsUpdateManyWithoutUserNestedInput
+    sections?: sectionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPasswordResetTokenInput = {
@@ -7140,6 +9238,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sheets?: sheetsUncheckedUpdateManyWithoutUserNestedInput
+    sections?: sectionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateWithoutSheetsInput = {
@@ -7150,6 +9249,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensCreateNestedManyWithoutUserInput
+    sections?: sectionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutSheetsInput = {
@@ -7161,6 +9261,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     PasswordResetToken?: password_reset_tokensUncheckedCreateNestedManyWithoutUserInput
+    sections?: sectionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutSheetsInput = {
@@ -7171,16 +9272,30 @@ export namespace Prisma {
   export type fieldsCreateWithoutSheetInput = {
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sections?: sectionsCreateNestedOneWithoutFieldsInput
   }
 
   export type fieldsUncheckedCreateWithoutSheetInput = {
     id?: number
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sectionId?: number | null
   }
 
   export type fieldsCreateOrConnectWithoutSheetInput = {
@@ -7190,6 +9305,29 @@ export namespace Prisma {
 
   export type fieldsCreateManySheetInputEnvelope = {
     data: fieldsCreateManySheetInput | fieldsCreateManySheetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type sectionsCreateWithoutSheetInput = {
+    name: string
+    user: usersCreateNestedOneWithoutSectionsInput
+    Fields?: fieldsCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsUncheckedCreateWithoutSheetInput = {
+    id?: number
+    name: string
+    userId: number
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSectionsInput
+  }
+
+  export type sectionsCreateOrConnectWithoutSheetInput = {
+    where: sectionsWhereUniqueInput
+    create: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput>
+  }
+
+  export type sectionsCreateManySheetInputEnvelope = {
+    data: sectionsCreateManySheetInput | sectionsCreateManySheetInput[]
     skipDuplicates?: boolean
   }
 
@@ -7212,6 +9350,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUpdateManyWithoutUserNestedInput
+    sections?: sectionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutSheetsInput = {
@@ -7223,6 +9362,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     PasswordResetToken?: password_reset_tokensUncheckedUpdateManyWithoutUserNestedInput
+    sections?: sectionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type fieldsUpsertWithWhereUniqueWithoutSheetInput = {
@@ -7249,8 +9389,198 @@ export namespace Prisma {
     sheetId?: IntFilter<"fields"> | number
     name?: StringFilter<"fields"> | string
     value?: StringNullableFilter<"fields"> | string | null
+    color?: StringNullableFilter<"fields"> | string | null
+    type?: StringNullableFilter<"fields"> | string | null
+    x?: FloatFilter<"fields"> | number
+    y?: FloatFilter<"fields"> | number
+    h?: FloatFilter<"fields"> | number
+    w?: FloatFilter<"fields"> | number
     createdAt?: DateTimeFilter<"fields"> | Date | string
     updatedAt?: DateTimeFilter<"fields"> | Date | string
+    sectionId?: IntNullableFilter<"fields"> | number | null
+  }
+
+  export type sectionsUpsertWithWhereUniqueWithoutSheetInput = {
+    where: sectionsWhereUniqueInput
+    update: XOR<sectionsUpdateWithoutSheetInput, sectionsUncheckedUpdateWithoutSheetInput>
+    create: XOR<sectionsCreateWithoutSheetInput, sectionsUncheckedCreateWithoutSheetInput>
+  }
+
+  export type sectionsUpdateWithWhereUniqueWithoutSheetInput = {
+    where: sectionsWhereUniqueInput
+    data: XOR<sectionsUpdateWithoutSheetInput, sectionsUncheckedUpdateWithoutSheetInput>
+  }
+
+  export type sectionsUpdateManyWithWhereWithoutSheetInput = {
+    where: sectionsScalarWhereInput
+    data: XOR<sectionsUpdateManyMutationInput, sectionsUncheckedUpdateManyWithoutSheetInput>
+  }
+
+  export type sheetsCreateWithoutSectionsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: usersCreateNestedOneWithoutSheetsInput
+    Fields?: fieldsCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsUncheckedCreateWithoutSectionsInput = {
+    id?: number
+    name: string
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Fields?: fieldsUncheckedCreateNestedManyWithoutSheetInput
+  }
+
+  export type sheetsCreateOrConnectWithoutSectionsInput = {
+    where: sheetsWhereUniqueInput
+    create: XOR<sheetsCreateWithoutSectionsInput, sheetsUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type usersCreateWithoutSectionsInput = {
+    email: string
+    password: string
+    name: string
+    recoveryTokens?: usersCreaterecoveryTokensInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PasswordResetToken?: password_reset_tokensCreateNestedManyWithoutUserInput
+    sheets?: sheetsCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutSectionsInput = {
+    id?: number
+    email: string
+    password: string
+    name: string
+    recoveryTokens?: usersCreaterecoveryTokensInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PasswordResetToken?: password_reset_tokensUncheckedCreateNestedManyWithoutUserInput
+    sheets?: sheetsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutSectionsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutSectionsInput, usersUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type fieldsCreateWithoutSectionsInput = {
+    name: string
+    value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sheet: sheetsCreateNestedOneWithoutFieldsInput
+  }
+
+  export type fieldsUncheckedCreateWithoutSectionsInput = {
+    id?: number
+    sheetId: number
+    name: string
+    value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsCreateOrConnectWithoutSectionsInput = {
+    where: fieldsWhereUniqueInput
+    create: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type fieldsCreateManySectionsInputEnvelope = {
+    data: fieldsCreateManySectionsInput | fieldsCreateManySectionsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type sheetsUpsertWithoutSectionsInput = {
+    update: XOR<sheetsUpdateWithoutSectionsInput, sheetsUncheckedUpdateWithoutSectionsInput>
+    create: XOR<sheetsCreateWithoutSectionsInput, sheetsUncheckedCreateWithoutSectionsInput>
+    where?: sheetsWhereInput
+  }
+
+  export type sheetsUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: sheetsWhereInput
+    data: XOR<sheetsUpdateWithoutSectionsInput, sheetsUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type sheetsUpdateWithoutSectionsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: usersUpdateOneRequiredWithoutSheetsNestedInput
+    Fields?: fieldsUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sheetsUncheckedUpdateWithoutSectionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Fields?: fieldsUncheckedUpdateManyWithoutSheetNestedInput
+  }
+
+  export type usersUpsertWithoutSectionsInput = {
+    update: XOR<usersUpdateWithoutSectionsInput, usersUncheckedUpdateWithoutSectionsInput>
+    create: XOR<usersCreateWithoutSectionsInput, usersUncheckedCreateWithoutSectionsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutSectionsInput, usersUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type usersUpdateWithoutSectionsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PasswordResetToken?: password_reset_tokensUpdateManyWithoutUserNestedInput
+    sheets?: sheetsUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutSectionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    recoveryTokens?: usersUpdaterecoveryTokensInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PasswordResetToken?: password_reset_tokensUncheckedUpdateManyWithoutUserNestedInput
+    sheets?: sheetsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type fieldsUpsertWithWhereUniqueWithoutSectionsInput = {
+    where: fieldsWhereUniqueInput
+    update: XOR<fieldsUpdateWithoutSectionsInput, fieldsUncheckedUpdateWithoutSectionsInput>
+    create: XOR<fieldsCreateWithoutSectionsInput, fieldsUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type fieldsUpdateWithWhereUniqueWithoutSectionsInput = {
+    where: fieldsWhereUniqueInput
+    data: XOR<fieldsUpdateWithoutSectionsInput, fieldsUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type fieldsUpdateManyWithWhereWithoutSectionsInput = {
+    where: fieldsScalarWhereInput
+    data: XOR<fieldsUpdateManyMutationInput, fieldsUncheckedUpdateManyWithoutSectionsInput>
   }
 
   export type sheetsCreateWithoutFieldsInput = {
@@ -7258,6 +9588,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: usersCreateNestedOneWithoutSheetsInput
+    sections?: sectionsCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsUncheckedCreateWithoutFieldsInput = {
@@ -7266,11 +9597,30 @@ export namespace Prisma {
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sections?: sectionsUncheckedCreateNestedManyWithoutSheetInput
   }
 
   export type sheetsCreateOrConnectWithoutFieldsInput = {
     where: sheetsWhereUniqueInput
     create: XOR<sheetsCreateWithoutFieldsInput, sheetsUncheckedCreateWithoutFieldsInput>
+  }
+
+  export type sectionsCreateWithoutFieldsInput = {
+    name: string
+    sheet: sheetsCreateNestedOneWithoutSectionsInput
+    user: usersCreateNestedOneWithoutSectionsInput
+  }
+
+  export type sectionsUncheckedCreateWithoutFieldsInput = {
+    id?: number
+    name: string
+    userId: number
+    sheetId: number
+  }
+
+  export type sectionsCreateOrConnectWithoutFieldsInput = {
+    where: sectionsWhereUniqueInput
+    create: XOR<sectionsCreateWithoutFieldsInput, sectionsUncheckedCreateWithoutFieldsInput>
   }
 
   export type sheetsUpsertWithoutFieldsInput = {
@@ -7289,6 +9639,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: usersUpdateOneRequiredWithoutSheetsNestedInput
+    sections?: sectionsUpdateManyWithoutSheetNestedInput
   }
 
   export type sheetsUncheckedUpdateWithoutFieldsInput = {
@@ -7297,6 +9648,31 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: sectionsUncheckedUpdateManyWithoutSheetNestedInput
+  }
+
+  export type sectionsUpsertWithoutFieldsInput = {
+    update: XOR<sectionsUpdateWithoutFieldsInput, sectionsUncheckedUpdateWithoutFieldsInput>
+    create: XOR<sectionsCreateWithoutFieldsInput, sectionsUncheckedCreateWithoutFieldsInput>
+    where?: sectionsWhereInput
+  }
+
+  export type sectionsUpdateToOneWithWhereWithoutFieldsInput = {
+    where?: sectionsWhereInput
+    data: XOR<sectionsUpdateWithoutFieldsInput, sectionsUncheckedUpdateWithoutFieldsInput>
+  }
+
+  export type sectionsUpdateWithoutFieldsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    sheet?: sheetsUpdateOneRequiredWithoutSectionsNestedInput
+    user?: usersUpdateOneRequiredWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateWithoutFieldsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
   }
 
   export type password_reset_tokensCreateManyUserInput = {
@@ -7311,6 +9687,12 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type sectionsCreateManyUserInput = {
+    id?: number
+    name: string
+    sheetId: number
   }
 
   export type password_reset_tokensUpdateWithoutUserInput = {
@@ -7338,6 +9720,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Fields?: fieldsUpdateManyWithoutSheetNestedInput
+    sections?: sectionsUpdateManyWithoutSheetNestedInput
   }
 
   export type sheetsUncheckedUpdateWithoutUserInput = {
@@ -7346,6 +9729,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Fields?: fieldsUncheckedUpdateManyWithoutSheetNestedInput
+    sections?: sectionsUncheckedUpdateManyWithoutSheetNestedInput
   }
 
   export type sheetsUncheckedUpdateManyWithoutUserInput = {
@@ -7355,33 +9739,164 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type sectionsUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    sheet?: sheetsUpdateOneRequiredWithoutSectionsNestedInput
+    Fields?: fieldsUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    sheetId?: IntFieldUpdateOperationsInput | number
+    Fields?: fieldsUncheckedUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    sheetId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type fieldsCreateManySheetInput = {
     id?: number
     name: string
     value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    sectionId?: number | null
+  }
+
+  export type sectionsCreateManySheetInput = {
+    id?: number
+    name: string
+    userId: number
   }
 
   export type fieldsUpdateWithoutSheetInput = {
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: sectionsUpdateOneWithoutFieldsNestedInput
   }
 
   export type fieldsUncheckedUpdateWithoutSheetInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type fieldsUncheckedUpdateManyWithoutSheetInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sectionId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type sectionsUpdateWithoutSheetInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    user?: usersUpdateOneRequiredWithoutSectionsNestedInput
+    Fields?: fieldsUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateWithoutSheetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    Fields?: fieldsUncheckedUpdateManyWithoutSectionsNestedInput
+  }
+
+  export type sectionsUncheckedUpdateManyWithoutSheetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type fieldsCreateManySectionsInput = {
+    id?: number
+    sheetId: number
+    name: string
+    value?: string | null
+    color?: string | null
+    type?: string | null
+    x?: number
+    y?: number
+    h?: number
+    w?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type fieldsUpdateWithoutSectionsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sheet?: sheetsUpdateOneRequiredWithoutFieldsNestedInput
+  }
+
+  export type fieldsUncheckedUpdateWithoutSectionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fieldsUncheckedUpdateManyWithoutSectionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sheetId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    value?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    x?: FloatFieldUpdateOperationsInput | number
+    y?: FloatFieldUpdateOperationsInput | number
+    h?: FloatFieldUpdateOperationsInput | number
+    w?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
